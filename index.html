@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Gerencia — Restaurante & Club Billar</title>
+    <title>La Gerencia — Restaurante</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -16,7 +16,6 @@
          */
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -26,7 +25,28 @@
             overflow-x: hidden;
         }
 
-        /* ── HEADER ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        .anim-fade-up { opacity: 0; }
+        .anim-fade-in { opacity: 0; }
+        .anim-fade-up.visible { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) forwards; }
+        .anim-fade-in.visible { animation: fadeIn 0.9s ease forwards; }
+        .delay-1 { animation-delay: 0.12s !important; }
+        .delay-2 { animation-delay: 0.26s !important; }
+        .delay-3 { animation-delay: 0.4s !important; }
+
+        /* HEADER */
         header {
             display: flex;
             justify-content: space-between;
@@ -38,36 +58,31 @@
             top: 0;
             z-index: 200;
         }
-
-        .logo-container img {
-            height: 70px;
-            object-fit: contain;
+        .header-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            color: #C5A059;
+            letter-spacing: 5px;
+            text-decoration: none;
+            line-height: 1;
         }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 40px;
-        }
-
+        nav ul { list-style: none; display: flex; gap: 40px; }
         nav ul li a {
             color: #C5A059;
             text-decoration: none;
             font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             letter-spacing: 3px;
             transition: color 0.3s;
         }
-
         nav ul li a:hover { color: #800000; }
 
-        /* ── HERO ── */
+        /* HERO */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: 88vh;
         }
-
         .hero-left {
             background-color: #121212;
             display: flex;
@@ -76,13 +91,13 @@
             padding: 8%;
             border-right: 4px solid #C5A059;
         }
-
         .hero-left img {
             width: 100%;
-            max-width: 480px;
+            max-width: 460px;
             object-fit: contain;
+            animation: fadeIn 1.2s ease forwards;
+            filter: drop-shadow(0 0 60px rgba(197,160,89,0.18));
         }
-
         .hero-right {
             background-color: #C5A059;
             display: flex;
@@ -90,78 +105,62 @@
             justify-content: flex-end;
             padding: 8% 8% 10%;
         }
-
         .hero-right .eyebrow {
             font-family: 'Oswald', sans-serif;
             font-size: 0.85rem;
             letter-spacing: 5px;
             color: #121212;
-            opacity: 0.7;
+            opacity: 0.65;
             margin-bottom: 16px;
+            animation: fadeUp 0.8s 0.3s ease both;
         }
-
         .hero-right h1 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(4rem, 7vw, 7rem);
             line-height: 0.9;
             color: #121212;
-            text-transform: uppercase;
             margin-bottom: 30px;
+            animation: fadeUp 0.8s 0.5s ease both;
         }
-
         .hero-right .tagline {
             font-family: 'Oswald', sans-serif;
             font-size: 1rem;
             letter-spacing: 2px;
             color: #121212;
-            opacity: 0.85;
+            opacity: 0.8;
             border-top: 2px solid #121212;
             padding-top: 20px;
             max-width: 400px;
+            animation: fadeUp 0.8s 0.7s ease both;
         }
 
-        /* ── BANDA FULL WIDTH ── */
-        .band {
-            background-color: #800000;
-            padding: 28px 5%;
-            overflow: hidden;
-        }
-
+        /* BANDA */
+        .band { background-color: #800000; padding: 26px 0; overflow: hidden; }
         .band-text {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2rem, 4vw, 4rem);
             letter-spacing: 6px;
             color: #F5F5F5;
             white-space: nowrap;
-            animation: marquee 18s linear infinite;
+            animation: marquee 20s linear infinite;
             display: inline-block;
         }
 
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
+        /* SPLITS */
+        .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh; }
 
-        /* ── SECCIÓN EDITORIAL (split) ── */
-        .split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 70vh;
+        .split-photo {
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
         }
-
-        .split-img {
-            background-color: #121212;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10%;
-            border: 1px solid #1e1e1e;
-        }
-
-        .split-img img {
-            width: 70%;
-            opacity: 0.85;
-            filter: drop-shadow(0 0 40px rgba(197,160,89,0.25));
+        .split-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(18,18,18,0.2) 0%, transparent 60%);
         }
 
         .split-text {
@@ -170,7 +169,6 @@
             justify-content: center;
             padding: 10% 9%;
         }
-
         .split-text.gold-bg  { background-color: #C5A059; color: #121212; }
         .split-text.black-bg { background-color: #121212; color: #F5F5F5; }
         .split-text.red-bg   { background-color: #800000; color: #F5F5F5; }
@@ -179,49 +177,27 @@
             font-family: 'Oswald', sans-serif;
             font-size: 0.78rem;
             letter-spacing: 5px;
-            opacity: 0.65;
+            opacity: 0.6;
             margin-bottom: 16px;
             text-transform: uppercase;
         }
-
         .split-text h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(3rem, 5.5vw, 5.5rem);
             line-height: 0.92;
-            text-transform: uppercase;
             margin-bottom: 28px;
         }
-
         .split-text p {
             font-size: 0.95rem;
-            font-weight: 400;
-            line-height: 1.8;
+            line-height: 1.9;
             opacity: 0.9;
             max-width: 380px;
         }
+        .gold-line  { width: 60px; height: 3px; background-color: #C5A059; margin: 24px 0; }
+        .black-line { width: 60px; height: 3px; background-color: #121212; margin: 24px 0; }
+        .white-line { width: 60px; height: 3px; background-color: #F5F5F5; margin: 24px 0; }
 
-        .gold-line {
-            width: 60px;
-            height: 3px;
-            background-color: #C5A059;
-            margin: 24px 0;
-        }
-
-        .red-line {
-            width: 60px;
-            height: 3px;
-            background-color: #800000;
-            margin: 24px 0;
-        }
-
-        .black-line {
-            width: 60px;
-            height: 3px;
-            background-color: #121212;
-            margin: 24px 0;
-        }
-
-        /* ── CTA MENÚ ── */
+        /* CTA MENÚ */
         .menu-cta {
             background-color: #121212;
             border-top: 3px solid #C5A059;
@@ -233,7 +209,6 @@
             padding: 100px 5%;
             text-align: center;
         }
-
         .menu-cta .cta-label {
             font-family: 'Oswald', sans-serif;
             font-size: 0.8rem;
@@ -242,7 +217,6 @@
             margin-bottom: 24px;
             opacity: 0.75;
         }
-
         .menu-cta h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(4rem, 10vw, 10rem);
@@ -250,7 +224,6 @@
             line-height: 0.9;
             margin-bottom: 50px;
         }
-
         .btn-menu {
             display: inline-block;
             padding: 20px 60px;
@@ -261,16 +234,16 @@
             font-size: 1.2rem;
             letter-spacing: 5px;
             font-weight: 700;
-            transition: background-color 0.3s, color 0.3s;
             border: 3px solid #C5A059;
+            transition: background-color 0.35s, color 0.35s, transform 0.2s;
         }
-
         .btn-menu:hover {
             background-color: transparent;
             color: #C5A059;
+            transform: translateY(-3px);
         }
 
-        /* ── CONTACTO ── */
+        /* CONTACTO */
         #contacto {
             background-color: #800000;
             display: flex;
@@ -279,11 +252,9 @@
             justify-content: center;
             padding: 120px 5%;
             text-align: center;
-            min-height: 60vh;
+            min-height: 55vh;
         }
-
         #contacto .label { color: #F5F5F5; margin-bottom: 30px; }
-
         #contacto .big-number {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(3.5rem, 9vw, 9rem);
@@ -292,72 +263,85 @@
             line-height: 1;
             margin-bottom: 20px;
         }
-
         #contacto .sub {
             font-family: 'Oswald', sans-serif;
             font-size: 0.9rem;
             letter-spacing: 4px;
-            color: #F5F5F5;
             opacity: 0.75;
         }
 
-        /* ── FOOTER ── */
+        /* FOOTER */
         footer {
             background-color: #121212;
-            border-top: 3px solid #C5A059;
-            padding: 60px 5%;
+            border-top: 4px solid #C5A059;
+            padding: 80px 5% 50px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
         }
-
+        .footer-icon {
+            font-size: 3.2rem;
+            margin-bottom: 18px;
+            filter: drop-shadow(0 0 14px rgba(197,160,89,0.45));
+        }
         footer .footer-brand {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(5rem, 10vw, 10rem);
             color: #C5A059;
-            letter-spacing: 4px;
+            letter-spacing: 10px;
+            line-height: 0.88;
+            margin-bottom: 14px;
         }
-
+        footer .footer-sub {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.82rem;
+            letter-spacing: 8px;
+            color: #F5F5F5;
+            opacity: 0.4;
+            margin-bottom: 40px;
+        }
+        footer .footer-divider {
+            width: 70px;
+            height: 2px;
+            background-color: #C5A059;
+            opacity: 0.45;
+            margin-bottom: 28px;
+        }
         footer .footer-copy {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: #F5F5F5;
-            opacity: 0.45;
-            text-align: right;
-            line-height: 1.8;
+            opacity: 0.3;
+            line-height: 2;
+            letter-spacing: 1px;
         }
 
-        /* ── RESPONSIVE ── */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero, .split {
-                grid-template-columns: 1fr;
-            }
+            .hero, .split { grid-template-columns: 1fr; }
             .hero-left {
-                min-height: 50vw;
+                min-height: 55vw;
                 border-right: none;
                 border-bottom: 4px solid #C5A059;
-                padding: 12% 15%;
+                padding: 12% 18%;
             }
-            .split-img { min-height: 300px; }
+            .split-photo { min-height: 280px; order: -1; }
             nav ul { gap: 16px; }
-            nav ul li a { font-size: 0.9rem; letter-spacing: 2px; }
-            footer { flex-direction: column; gap: 20px; text-align: center; }
-            footer .footer-copy { text-align: center; }
+            nav ul li a { font-size: 0.85rem; letter-spacing: 1px; }
+            footer { padding: 60px 5% 40px; }
         }
-
         @media (max-width: 480px) {
             nav ul { gap: 10px; }
             .btn-menu { padding: 16px 36px; font-size: 1rem; }
+            .header-brand { font-size: 1.7rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
     <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="La Gerencia">
-        </div>
+        <a href="#inicio" class="header-brand">LA GERENCIA</a>
         <nav>
             <ul>
                 <li><a href="#inicio">INICIO</a></li>
@@ -367,88 +351,95 @@
         </nav>
     </header>
 
-    <!-- HERO -->
     <section id="inicio" class="hero">
         <div class="hero-left">
             <img src="logo.png" alt="La Gerencia Logo">
         </div>
         <div class="hero-right">
-            <span class="eyebrow">RESTAURANTE & CLUB BILLAR</span>
+            <span class="eyebrow">RESTAURANTE · SOYAPANGO</span>
             <h1>EL SABOR<br>QUE BUSCABAS</h1>
             <p class="tagline">GASTRONOMÍA EXCLUSIVA · BEBIDAS HELADAS · LA MEJOR MESA DE BILLAR</p>
         </div>
     </section>
 
-    <!-- BANDA ANIMADA -->
     <div class="band">
         <span class="band-text">
-            PLATOS FUERTES &nbsp;·&nbsp; COMIDA MEXICANA &nbsp;·&nbsp; BOQUITAS &nbsp;·&nbsp; CERVEZAS &nbsp;·&nbsp; CLUB BILLAR &nbsp;·&nbsp;
-            PLATOS FUERTES &nbsp;·&nbsp; COMIDA MEXICANA &nbsp;·&nbsp; BOQUITAS &nbsp;·&nbsp; CERVEZAS &nbsp;·&nbsp; CLUB BILLAR &nbsp;·&nbsp;
+            PLATOS FUERTES &nbsp;·&nbsp; COMIDA MEXICANA &nbsp;·&nbsp; BOQUITAS &nbsp;·&nbsp; CERVEZAS &nbsp;·&nbsp; BILLAR &nbsp;·&nbsp; MICHELADAS &nbsp;·&nbsp;
+            PLATOS FUERTES &nbsp;·&nbsp; COMIDA MEXICANA &nbsp;·&nbsp; BOQUITAS &nbsp;·&nbsp; CERVEZAS &nbsp;·&nbsp; BILLAR &nbsp;·&nbsp; MICHELADAS &nbsp;·&nbsp;
         </span>
     </div>
 
-    <!-- SECCIÓN 1 -->
     <section class="split">
         <div class="split-text gold-bg">
-            <span class="label">NUESTRA COCINA</span>
-            <h2>SABOR QUE SE QUEDA</h2>
-            <div class="black-line"></div>
-            <p>Desde lomo a la chimichurri hasta costilla ahumada. Cada plato lleva chimol, tortillas fritas y casamiento. Hecho con orgullo, servido con estilo.</p>
+            <span class="label anim-fade-up">NUESTRA COCINA</span>
+            <h2 class="anim-fade-up delay-1">SABOR QUE SE QUEDA</h2>
+            <div class="black-line anim-fade-up delay-2"></div>
+            <p class="anim-fade-up delay-3">Desde lomo a la chimichurri hasta costilla ahumada. Cada plato lleva chimol, tortillas fritas y casamiento. Hecho con orgullo, servido con estilo.</p>
         </div>
-        <div class="split-img">
-            <img src="logo.png" alt="La Gerencia">
+        <div class="split-photo anim-fade-in"
+             style="background-image: url('https://images.unsplash.com/photo-1544025162-833215be15f7?q=80&w=1200&auto=format&fit=crop');">
         </div>
     </section>
 
-    <!-- SECCIÓN 2 -->
     <section class="split">
-        <div class="split-img">
-            <img src="logo.png" alt="La Gerencia">
+        <div class="split-photo anim-fade-in"
+             style="background-image: url('https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?q=80&w=1200&auto=format&fit=crop');">
         </div>
         <div class="split-text black-bg">
-            <span class="label">COMIDA MEXICANA</span>
-            <h2>TACOS BURRITOS TORTAS</h2>
-            <div class="gold-line"></div>
-            <p>Auténtico sabor mexicano en cada mordida. Res, pollo o mixto — tú eliges. Disponible en porciones para uno o para compartir.</p>
+            <span class="label anim-fade-up">COMIDA MEXICANA</span>
+            <h2 class="anim-fade-up delay-1">TACOS<br>BURRITOS<br>TORTAS</h2>
+            <div class="gold-line anim-fade-up delay-2"></div>
+            <p class="anim-fade-up delay-3">Auténtico sabor en cada mordida. Res, pollo o mixto — tú eliges. En porciones para uno o para compartir.</p>
         </div>
     </section>
 
-    <!-- SECCIÓN 3 -->
     <section class="split">
         <div class="split-text red-bg">
-            <span class="label">ESPECIAL DE LA CASA</span>
-            <h2>PLATO DE BOCA LA GERENCIA</h2>
-            <div class="gold-line"></div>
-            <p>Costilla · Chicharrones · Chorizo · Alitas · Tortilla frita · Chimol · Cuajada · Aguacate. Todo en un solo plato. $8.00</p>
+            <span class="label anim-fade-up">ESPECIAL DE LA CASA</span>
+            <h2 class="anim-fade-up delay-1">PLATO<br>LA GERENCIA</h2>
+            <div class="white-line anim-fade-up delay-2"></div>
+            <p class="anim-fade-up delay-3">Costilla · Chicharrones · Chorizo · Alitas · Tortilla frita · Chimol · Cuajada · Aguacate. Todo en un solo plato por <strong>$8.00</strong></p>
         </div>
-        <div class="split-img">
-            <img src="logo.png" alt="La Gerencia">
+        <div class="split-photo anim-fade-in"
+             style="background-image: url('https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=1200&auto=format&fit=crop');">
         </div>
     </section>
 
-    <!-- CTA MENÚ -->
     <section class="menu-cta">
-        <span class="cta-label">VER TODO LO QUE TENEMOS</span>
-        <h2>NUESTRO<br>MENÚ</h2>
-        <a href="menu.html" class="btn-menu">VER MENÚ COMPLETO</a>
+        <span class="cta-label anim-fade-up">VER TODO LO QUE TENEMOS</span>
+        <h2 class="anim-fade-up delay-1">NUESTRO<br>MENÚ</h2>
+        <a href="menu.html" class="btn-menu anim-fade-up delay-2">VER MENÚ COMPLETO</a>
     </section>
 
-    <!-- CONTACTO -->
     <section id="contacto">
-        <span class="label">ENCUÉNTRANOS · ESCRÍBENOS</span>
-        <div class="big-number">+503 0000-0000</div>
-        <p class="sub">DISPONIBLE VÍA WHATSAPP</p>
+        <span class="label anim-fade-up">ENCUÉNTRANOS · ESCRÍBENOS</span>
+        <div class="big-number anim-fade-up delay-1">+503 0000-0000</div>
+        <p class="sub anim-fade-up delay-2">DISPONIBLE VÍA WHATSAPP</p>
     </section>
 
-    <!-- FOOTER -->
     <footer>
+        <div class="footer-icon">🎱</div>
         <div class="footer-brand">LA GERENCIA</div>
+        <div class="footer-sub">RESTAURANTE &amp; CLUB BILLAR</div>
+        <div class="footer-divider"></div>
         <div class="footer-copy">
-            RESTAURANTE & CLUB BILLAR<br>
             © 2026. Todos los derechos reservados.<br>
             Desarrollado por Willy para La Gerencia.
         </div>
     </footer>
+
+    <script>
+        const targets = document.querySelectorAll('.anim-fade-up, .anim-fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        targets.forEach(el => observer.observe(el));
+    </script>
 
 </body>
 </html>
