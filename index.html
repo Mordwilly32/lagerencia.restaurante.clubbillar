@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Gerencia - Restaurante & Club Billar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /*
+         * © 2026 La Gerencia - Restaurante & Club Billar
+         * Todos los derechos reservados.
+         * Código desarrollado por Willy para La Gerencia.
+         */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121212;
+            color: #F5F5F5;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: #121212;
+            border-bottom: 4px solid #C5A059;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container img {
+            height: 80px;
+            object-fit: contain;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #C5A059;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #800000;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 70vh;
+            border-bottom: 10px solid #800000;
+        }
+
+        .hero-text {
+            background-color: #C5A059;
+            color: #121212;
+            padding: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            background-image: url('https://images.unsplash.com/photo-1605338166540-eb5bf6364023?q=80&w=1000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .editorial-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .editorial-content {
+            padding: 8% 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .editorial-image {
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+        }
+
+        .bg-black { background-color: #121212; color: #F5F5F5; }
+        .bg-gold { background-color: #C5A059; color: #121212; }
+        .bg-red { background-color: #800000; color: #F5F5F5; }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            border-bottom: 2px solid currentColor;
+            padding-bottom: 10px;
+        }
+
+        .menu-list {
+            list-style: none;
+            width: 100%;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 1px dashed rgba(255,255,255,0.3);
+            padding-bottom: 5px;
+        }
+
+        .bg-gold .menu-item { border-bottom: 1px dashed rgba(18,18,18,0.3); }
+
+        .menu-item-name { font-weight: 600; }
+        .menu-item-price { font-weight: 700; font-family: 'Oswald', sans-serif; font-size: 1.2rem; }
+        
+        .menu-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0.9;
+            background-color: rgba(0,0,0,0.1);
+            padding: 10px;
+            border-left: 4px solid currentColor;
+        }
+
+        .sub-category {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: currentColor;
+        }
+
+        footer {
+            background-color: #121212;
+            color: #C5A059;
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 4px solid #C5A059;
+        }
+
+        footer h2 {
+            font-size: 5rem;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero, .editorial-section {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h1 { font-size: 3rem; }
+            nav ul { flex-direction: column; gap: 10px; text-align: right;}
+            .editorial-image { min-height: 300px; }
+            footer h2 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="La Gerencia Restaurante & Club Billar">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">INICIO</a></li>
+                <li><a href="#menu">MENÚ</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-text">
+            <h1>EL MEJOR AMBIENTE Y SABOR</h1>
+            <p>RESTAURANTE & CLUB BILLAR. GASTRONOMÍA EXCLUSIVA, BEBIDAS HELADAS Y LA MEJOR MESA DE BILLAR EN LA CIUDAD.</p>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <section id="menu" class="editorial-section">
+        <div class="editorial-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-833215be15f7?q=80&w=1000&auto=format&fit=crop');"></div>
+        
+        <div class="editorial-content bg-gold">
+            <h2 class="section-title">Platos Fuertes</h2>
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <span class="menu-item-name">Lomo de Cerdo a la Chimichurri</span>
+                    <span class="menu-item-price">$8.00</span>
+                </li>
+                <li class="menu-item">
+                    <span class="menu-item-name">Carne a la Plancha</span>
+                    <span class="menu-item-price">$8.00</span>
+                </li>
+                <li class="menu-item">
+                    <span class="menu-item-name">Pechuga Deshuesada</span>
+                    <span class="menu-item-price">$7.00</span>
+                </li>
+                <li class="menu-item">
+                    <span class="menu-item-name">Costilla de Cerdo Ahumada</span>
+                    <span class="menu-item-price">$8.00</span>
+                </li>
+                <li class="menu-item">
+                    <span class="menu-item-name">Filete de Cerdo al Jalapeño</span>
+                    <span class="menu-item-price">$8.00</span>
+                </li>
+                <li class="menu-item">
+                    <span class="menu-item-name">Alitas a la BBQ</span>
+                    <span class="menu-item-price">$7.00</span>
+                </li>
+            </ul>
+            <div class="menu-note">
+                <strong>NOTA:</strong> Cada plato incluye Chimol, 2 Tortillas Fritas y Casamiento.
+            </div>
+        </div>
+    </section>
+
+    <section class="editorial-section">
+        <div class="editorial-content bg-black">
+            <h2 class="section-title" style="color: #C5A059;">Comida Mexicana</h2>
+            
+            <h3 class="sub-category">Burritos</h3>
+            <ul class="menu-list">
+                <li class="menu-item"><span class="menu-item-name">Res / Pollo</span><span class="menu-item-price">$5.00</span></li>
+                <li class="menu-item"><span class="menu-item-name">Mixto</span><span class="menu-item-price">$6.00</span></li>
+            </ul>
+
+            <h3 class="sub-category">Tacos</h3>
+            <ul class="menu-list">
+                <li class="menu-item"><span class="menu-item-name">Res (3 porciones / 6 porciones)</span><span class="menu-item-price">$4.00 / $7.00</span></li>
+                <li class="menu-item"><span class="menu-item-name">Pollo (3 porciones / 6 porciones)</span><span class="menu-item-price">$4.00 / $7.00</span></li>
+                <li class="menu-item"><span class="menu-item-name">Mixto (3 porciones / 6 porciones)</span><span class="menu-item-price">$4.00 / $7.00</span></li>
+            </ul>
+
+            <h3 class="sub-category">Tortas</h3>
+            <ul class="menu-list">
+                <li class="menu-item"><span class="menu-item-name">Res / Pollo</span><span class="menu-item-price">$5.00</span></li>
+                <li class="menu-item"><span class="menu-item-name">Mixta</span><span class="menu-item-price">$6.00</span></li>
+            </ul>
+
+            <h3 class="sub-category">Gringas & Quesadillas</h3>
+            <ul class="menu-list">
+                <li class="menu-item"><span class="menu-item-name">Res / Pollo</span><span class="menu-item-price">$5.00</span></li>
+                <li class="menu-item"><span class="menu-item-name">Pastor</span><span class="menu-item-price">$6.00</span></li>
+            </ul>
+        </div>
+        <div class="editorial-image" style="background-image: url('https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?q=80&w=1000&auto=format&fit=crop');"></div>
+    </section>
+
+    <section class="editorial-section">
+        <div class="editorial-image" style="background-image: url('https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=1000&auto=format&fit=crop');"></div>
+        
+        <div class="editorial-content bg-red">
+            <h2 class="section-title">Boquitas</h2>
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <span class="menu-item-name">Costilla de Cerdo</span>
+                    <span class="menu-item-price">$2.50 c/u</span>
+                </li>
+                <li class="menu-item">
+                    <span class="menu-item-name">Chicharrones</span>
+                    <span class="menu-item-price">$2.50 c/u</span>
+                </li>
+                <li class="menu-item">
+                    <span class="menu-item-name">Chorizo</span>
+                    <span class="menu-item-price">$2.50 c/u</span>
+                </li>
+                <li class="menu-item">
+                    <span class="menu-item-name">Alitas</span>
+                    <span class="menu-item-price">$2.50 c/u</span>
+                </li>
+            </ul>
+            <div class="menu-note">
+                Cada boquita incluye Tortilla Frita y Chimol.
+            </div>
+
+            <br><br>
+            <h2 class="section-title" style="font-size: 2rem;">Especial de la Casa</h2>
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <span class="menu-item-name">Plato de Boca a La Gerencia</span>
+                    <span class="menu-item-price">$8.00</span>
+                </li>
+            </ul>
+            <p style="font-size: 0.9rem; margin-top: 5px;">Incluye: Costilla de cerdo, chicharrones, chorizo, alitas, tortilla frita, chimol, cuajada y aguacate.</p>
+        </div>
+    </section>
+
+    <section class="editorial-section">
+        <div class="editorial-content bg-gold">
+            <h2 class="section-title">Bebidas</h2>
+            
+            <h3 class="sub-category">Cervezas</h3>
+            <ul class="menu-list">
+                <li class="menu-item"><span class="menu-item-name">Pilsener</span><span class="menu-item-price">$1.25</span></li>
+                <li class="menu-item"><span class="menu-item-name">Golden</span><span class="menu-item-price">$1.25</span></li>
+                <li class="menu-item"><span class="menu-item-name">Suprema</span><span class="menu-item-price"></span></li>
+                <li class="menu-item"><span class="menu-item-name">Corona</span><span class="menu-item-price"></span></li>
+                <li class="menu-item"><span class="menu-item-name">Regia</span><span class="menu-item-price"></span></li>
+            </ul>
+            <p style="font-size: 0.9rem; margin-top: 5px; font-weight: 600;">* Disponibles en Michelada o Mix.</p>
+
+            <h3 class="sub-category">Sin Alcohol</h3>
+            <ul class="menu-list">
+                <li class="menu-item"><span class="menu-item-name">Sodas (Coca Cola, Fanta, Sprite)</span><span class="menu-item-price"></span></li>
+                <li class="menu-item"><span class="menu-item-name">Limonadas</span><span class="menu-item-price"></span></li>
+            </ul>
+        </div>
+        <div class="editorial-image" style="background-image: url('https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=1000&auto=format&fit=crop');"></div>
+    </section>
+
+    <footer id="contacto">
+        <h2>LA GERENCIA</h2>
+        <p>RESTAURANTE & CLUB BILLAR</p>
+        <p style="margin-top: 20px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: #F5F5F5;">
+            © 2026 La Gerencia. Todos los derechos reservados.
+        </p>
+    </footer>
+
+</body>
+</html>
