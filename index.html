@@ -3,358 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Gerencia - Restaurante & Club Billar</title>
+    <title>La Gerencia — Restaurante & Club Billar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
         /*
-         * © 2026 La Gerencia - Restaurante & Club Billar
+         * © 2026 La Gerencia — Restaurante & Club Billar
          * Todos los derechos reservados.
          * Código desarrollado por Willy para La Gerencia.
          */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: #121212;
             color: #F5F5F5;
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-        }
-
+        /* ── HEADER ── */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
+            padding: 18px 5%;
             background-color: #121212;
-            border-bottom: 4px solid #C5A059;
+            border-bottom: 3px solid #C5A059;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 200;
         }
 
         .logo-container img {
-            height: 80px;
+            height: 70px;
             object-fit: contain;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 40px;
         }
 
         nav ul li a {
             color: #C5A059;
             text-decoration: none;
             font-family: 'Oswald', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            transition: color 0.3s;
         }
 
-        nav ul li a:hover {
-            color: #800000;
-        }
+        nav ul li a:hover { color: #800000; }
 
+        /* ── HERO ── */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            min-height: 70vh;
-            border-bottom: 10px solid #800000;
+            min-height: 88vh;
         }
 
-        .hero-text {
+        .hero-left {
+            background-color: #121212;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8%;
+            border-right: 4px solid #C5A059;
+        }
+
+        .hero-left img {
+            width: 100%;
+            max-width: 480px;
+            object-fit: contain;
+        }
+
+        .hero-right {
             background-color: #C5A059;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 8% 8% 10%;
+        }
+
+        .hero-right .eyebrow {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
             color: #121212;
+            opacity: 0.7;
+            margin-bottom: 16px;
+        }
+
+        .hero-right h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 7vw, 7rem);
+            line-height: 0.9;
+            color: #121212;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .hero-right .tagline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: #121212;
+            opacity: 0.85;
+            border-top: 2px solid #121212;
+            padding-top: 20px;
+            max-width: 400px;
+        }
+
+        /* ── BANDA FULL WIDTH ── */
+        .band {
+            background-color: #800000;
+            padding: 28px 5%;
+            overflow: hidden;
+        }
+
+        .band-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            letter-spacing: 6px;
+            color: #F5F5F5;
+            white-space: nowrap;
+            animation: marquee 18s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* ── SECCIÓN EDITORIAL (split) ── */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 70vh;
+        }
+
+        .split-img {
+            background-color: #121212;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 10%;
+            border: 1px solid #1e1e1e;
+        }
+
+        .split-img img {
+            width: 70%;
+            opacity: 0.85;
+            filter: drop-shadow(0 0 40px rgba(197,160,89,0.25));
+        }
+
+        .split-text {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            padding: 10% 9%;
         }
 
-        .hero-text h1 {
-            font-size: 4rem;
-            line-height: 1.1;
+        .split-text.gold-bg  { background-color: #C5A059; color: #121212; }
+        .split-text.black-bg { background-color: #121212; color: #F5F5F5; }
+        .split-text.red-bg   { background-color: #800000; color: #F5F5F5; }
+
+        .label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 5px;
+            opacity: 0.65;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .split-text h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 5.5vw, 5.5rem);
+            line-height: 0.92;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .split-text p {
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 1.8;
+            opacity: 0.9;
+            max-width: 380px;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 3px;
+            background-color: #C5A059;
+            margin: 24px 0;
+        }
+
+        .red-line {
+            width: 60px;
+            height: 3px;
+            background-color: #800000;
+            margin: 24px 0;
+        }
+
+        .black-line {
+            width: 60px;
+            height: 3px;
+            background-color: #121212;
+            margin: 24px 0;
+        }
+
+        /* ── CTA MENÚ ── */
+        .menu-cta {
+            background-color: #121212;
+            border-top: 3px solid #C5A059;
+            border-bottom: 3px solid #C5A059;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .menu-cta .cta-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 6px;
+            color: #C5A059;
+            margin-bottom: 24px;
+            opacity: 0.75;
+        }
+
+        .menu-cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 10vw, 10rem);
+            color: #F5F5F5;
+            line-height: 0.9;
+            margin-bottom: 50px;
+        }
+
+        .btn-menu {
+            display: inline-block;
+            padding: 20px 60px;
+            background-color: #C5A059;
+            color: #121212;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s, color 0.3s;
+            border: 3px solid #C5A059;
+        }
+
+        .btn-menu:hover {
+            background-color: transparent;
+            color: #C5A059;
+        }
+
+        /* ── CONTACTO ── */
+        #contacto {
+            background-color: #800000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 5%;
+            text-align: center;
+            min-height: 60vh;
+        }
+
+        #contacto .label { color: #F5F5F5; margin-bottom: 30px; }
+
+        #contacto .big-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 9vw, 9rem);
+            color: #C5A059;
+            letter-spacing: 6px;
+            line-height: 1;
             margin-bottom: 20px;
         }
 
-        .hero-text p {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-
-        .hero-image {
-            background-image: url('https://images.unsplash.com/photo-1605338166540-eb5bf6364023?q=80&w=1000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .editorial-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .editorial-content {
-            padding: 8% 10%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .editorial-image {
-            background-size: cover;
-            background-position: center;
-            min-height: 500px;
-        }
-
-        .bg-black { background-color: #121212; color: #F5F5F5; }
-        .bg-gold { background-color: #C5A059; color: #121212; }
-        .bg-red { background-color: #800000; color: #F5F5F5; }
-
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            border-bottom: 2px solid currentColor;
-            padding-bottom: 10px;
-        }
-
-        .menu-list {
-            list-style: none;
-            width: 100%;
-        }
-
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            border-bottom: 1px dashed rgba(255,255,255,0.3);
-            padding-bottom: 5px;
-        }
-
-        .bg-gold .menu-item { border-bottom: 1px dashed rgba(18,18,18,0.3); }
-
-        .menu-item-name { font-weight: 600; }
-        .menu-item-price { font-weight: 700; font-family: 'Oswald', sans-serif; font-size: 1.2rem; }
-        
-        .menu-note {
-            margin-top: 20px;
+        #contacto .sub {
+            font-family: 'Oswald', sans-serif;
             font-size: 0.9rem;
-            font-style: italic;
-            opacity: 0.9;
-            background-color: rgba(0,0,0,0.1);
-            padding: 10px;
-            border-left: 4px solid currentColor;
+            letter-spacing: 4px;
+            color: #F5F5F5;
+            opacity: 0.75;
         }
 
-        .sub-category {
-            margin-top: 25px;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: currentColor;
-        }
-
+        /* ── FOOTER ── */
         footer {
             background-color: #121212;
+            border-top: 3px solid #C5A059;
+            padding: 60px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer .footer-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             color: #C5A059;
-            text-align: center;
-            padding: 60px 20px;
-            border-top: 4px solid #C5A059;
+            letter-spacing: 4px;
         }
 
-        footer h2 {
-            font-size: 5rem;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
+        footer .footer-copy {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            color: #F5F5F5;
+            opacity: 0.45;
+            text-align: right;
+            line-height: 1.8;
         }
 
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .hero, .editorial-section {
+            .hero, .split {
                 grid-template-columns: 1fr;
             }
-            .hero-text h1 { font-size: 3rem; }
-            nav ul { flex-direction: column; gap: 10px; text-align: right;}
-            .editorial-image { min-height: 300px; }
-            footer h2 { font-size: 3rem; }
+            .hero-left {
+                min-height: 50vw;
+                border-right: none;
+                border-bottom: 4px solid #C5A059;
+                padding: 12% 15%;
+            }
+            .split-img { min-height: 300px; }
+            nav ul { gap: 16px; }
+            nav ul li a { font-size: 0.9rem; letter-spacing: 2px; }
+            footer { flex-direction: column; gap: 20px; text-align: center; }
+            footer .footer-copy { text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            nav ul { gap: 10px; }
+            .btn-menu { padding: 16px 36px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- HEADER -->
     <header>
         <div class="logo-container">
-            <img src="logo.png" alt="La Gerencia Restaurante & Club Billar">
+            <img src="logo.png" alt="La Gerencia">
         </div>
         <nav>
             <ul>
                 <li><a href="#inicio">INICIO</a></li>
-                <li><a href="#menu">MENÚ</a></li>
+                <li><a href="menu.html">MENÚ</a></li>
                 <li><a href="#contacto">CONTACTO</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- HERO -->
     <section id="inicio" class="hero">
-        <div class="hero-text">
-            <h1>EL MEJOR AMBIENTE Y SABOR</h1>
-            <p>RESTAURANTE & CLUB BILLAR. GASTRONOMÍA EXCLUSIVA, BEBIDAS HELADAS Y LA MEJOR MESA DE BILLAR EN LA CIUDAD.</p>
+        <div class="hero-left">
+            <img src="logo.png" alt="La Gerencia Logo">
         </div>
-        <div class="hero-image"></div>
-    </section>
-
-    <section id="menu" class="editorial-section">
-        <div class="editorial-image" style="background-image: url('https://images.unsplash.com/photo-1544025162-833215be15f7?q=80&w=1000&auto=format&fit=crop');"></div>
-        
-        <div class="editorial-content bg-gold">
-            <h2 class="section-title">Platos Fuertes</h2>
-            <ul class="menu-list">
-                <li class="menu-item">
-                    <span class="menu-item-name">Lomo de Cerdo a la Chimichurri</span>
-                    <span class="menu-item-price">$8.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="menu-item-name">Carne a la Plancha</span>
-                    <span class="menu-item-price">$8.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="menu-item-name">Pechuga Deshuesada</span>
-                    <span class="menu-item-price">$7.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="menu-item-name">Costilla de Cerdo Ahumada</span>
-                    <span class="menu-item-price">$8.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="menu-item-name">Filete de Cerdo al Jalapeño</span>
-                    <span class="menu-item-price">$8.00</span>
-                </li>
-                <li class="menu-item">
-                    <span class="menu-item-name">Alitas a la BBQ</span>
-                    <span class="menu-item-price">$7.00</span>
-                </li>
-            </ul>
-            <div class="menu-note">
-                <strong>NOTA:</strong> Cada plato incluye Chimol, 2 Tortillas Fritas y Casamiento.
-            </div>
+        <div class="hero-right">
+            <span class="eyebrow">RESTAURANTE & CLUB BILLAR</span>
+            <h1>EL SABOR<br>QUE BUSCABAS</h1>
+            <p class="tagline">GASTRONOMÍA EXCLUSIVA · BEBIDAS HELADAS · LA MEJOR MESA DE BILLAR</p>
         </div>
     </section>
 
-    <section class="editorial-section">
-        <div class="editorial-content bg-black">
-            <h2 class="section-title" style="color: #C5A059;">Comida Mexicana</h2>
-            
-            <h3 class="sub-category">Burritos</h3>
-            <ul class="menu-list">
-                <li class="menu-item"><span class="menu-item-name">Res / Pollo</span><span class="menu-item-price">$5.00</span></li>
-                <li class="menu-item"><span class="menu-item-name">Mixto</span><span class="menu-item-price">$6.00</span></li>
-            </ul>
+    <!-- BANDA ANIMADA -->
+    <div class="band">
+        <span class="band-text">
+            PLATOS FUERTES &nbsp;·&nbsp; COMIDA MEXICANA &nbsp;·&nbsp; BOQUITAS &nbsp;·&nbsp; CERVEZAS &nbsp;·&nbsp; CLUB BILLAR &nbsp;·&nbsp;
+            PLATOS FUERTES &nbsp;·&nbsp; COMIDA MEXICANA &nbsp;·&nbsp; BOQUITAS &nbsp;·&nbsp; CERVEZAS &nbsp;·&nbsp; CLUB BILLAR &nbsp;·&nbsp;
+        </span>
+    </div>
 
-            <h3 class="sub-category">Tacos</h3>
-            <ul class="menu-list">
-                <li class="menu-item"><span class="menu-item-name">Res (3 porciones / 6 porciones)</span><span class="menu-item-price">$4.00 / $7.00</span></li>
-                <li class="menu-item"><span class="menu-item-name">Pollo (3 porciones / 6 porciones)</span><span class="menu-item-price">$4.00 / $7.00</span></li>
-                <li class="menu-item"><span class="menu-item-name">Mixto (3 porciones / 6 porciones)</span><span class="menu-item-price">$4.00 / $7.00</span></li>
-            </ul>
-
-            <h3 class="sub-category">Tortas</h3>
-            <ul class="menu-list">
-                <li class="menu-item"><span class="menu-item-name">Res / Pollo</span><span class="menu-item-price">$5.00</span></li>
-                <li class="menu-item"><span class="menu-item-name">Mixta</span><span class="menu-item-price">$6.00</span></li>
-            </ul>
-
-            <h3 class="sub-category">Gringas & Quesadillas</h3>
-            <ul class="menu-list">
-                <li class="menu-item"><span class="menu-item-name">Res / Pollo</span><span class="menu-item-price">$5.00</span></li>
-                <li class="menu-item"><span class="menu-item-name">Pastor</span><span class="menu-item-price">$6.00</span></li>
-            </ul>
+    <!-- SECCIÓN 1 -->
+    <section class="split">
+        <div class="split-text gold-bg">
+            <span class="label">NUESTRA COCINA</span>
+            <h2>SABOR QUE SE QUEDA</h2>
+            <div class="black-line"></div>
+            <p>Desde lomo a la chimichurri hasta costilla ahumada. Cada plato lleva chimol, tortillas fritas y casamiento. Hecho con orgullo, servido con estilo.</p>
         </div>
-        <div class="editorial-image" style="background-image: url('https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?q=80&w=1000&auto=format&fit=crop');"></div>
-    </section>
-
-    <section class="editorial-section">
-        <div class="editorial-image" style="background-image: url('https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=1000&auto=format&fit=crop');"></div>
-        
-        <div class="editorial-content bg-red">
-            <h2 class="section-title">Boquitas</h2>
-            <ul class="menu-list">
-                <li class="menu-item">
-                    <span class="menu-item-name">Costilla de Cerdo</span>
-                    <span class="menu-item-price">$2.50 c/u</span>
-                </li>
-                <li class="menu-item">
-                    <span class="menu-item-name">Chicharrones</span>
-                    <span class="menu-item-price">$2.50 c/u</span>
-                </li>
-                <li class="menu-item">
-                    <span class="menu-item-name">Chorizo</span>
-                    <span class="menu-item-price">$2.50 c/u</span>
-                </li>
-                <li class="menu-item">
-                    <span class="menu-item-name">Alitas</span>
-                    <span class="menu-item-price">$2.50 c/u</span>
-                </li>
-            </ul>
-            <div class="menu-note">
-                Cada boquita incluye Tortilla Frita y Chimol.
-            </div>
-
-            <br><br>
-            <h2 class="section-title" style="font-size: 2rem;">Especial de la Casa</h2>
-            <ul class="menu-list">
-                <li class="menu-item">
-                    <span class="menu-item-name">Plato de Boca a La Gerencia</span>
-                    <span class="menu-item-price">$8.00</span>
-                </li>
-            </ul>
-            <p style="font-size: 0.9rem; margin-top: 5px;">Incluye: Costilla de cerdo, chicharrones, chorizo, alitas, tortilla frita, chimol, cuajada y aguacate.</p>
+        <div class="split-img">
+            <img src="logo.png" alt="La Gerencia">
         </div>
     </section>
 
-    <section class="editorial-section">
-        <div class="editorial-content bg-gold">
-            <h2 class="section-title">Bebidas</h2>
-            
-            <h3 class="sub-category">Cervezas</h3>
-            <ul class="menu-list">
-                <li class="menu-item"><span class="menu-item-name">Pilsener</span><span class="menu-item-price">$1.25</span></li>
-                <li class="menu-item"><span class="menu-item-name">Golden</span><span class="menu-item-price">$1.25</span></li>
-                <li class="menu-item"><span class="menu-item-name">Suprema</span><span class="menu-item-price"></span></li>
-                <li class="menu-item"><span class="menu-item-name">Corona</span><span class="menu-item-price"></span></li>
-                <li class="menu-item"><span class="menu-item-name">Regia</span><span class="menu-item-price"></span></li>
-            </ul>
-            <p style="font-size: 0.9rem; margin-top: 5px; font-weight: 600;">* Disponibles en Michelada o Mix.</p>
-
-            <h3 class="sub-category">Sin Alcohol</h3>
-            <ul class="menu-list">
-                <li class="menu-item"><span class="menu-item-name">Sodas (Coca Cola, Fanta, Sprite)</span><span class="menu-item-price"></span></li>
-                <li class="menu-item"><span class="menu-item-name">Limonadas</span><span class="menu-item-price"></span></li>
-            </ul>
+    <!-- SECCIÓN 2 -->
+    <section class="split">
+        <div class="split-img">
+            <img src="logo.png" alt="La Gerencia">
         </div>
-        <div class="editorial-image" style="background-image: url('https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=1000&auto=format&fit=crop');"></div>
+        <div class="split-text black-bg">
+            <span class="label">COMIDA MEXICANA</span>
+            <h2>TACOS BURRITOS TORTAS</h2>
+            <div class="gold-line"></div>
+            <p>Auténtico sabor mexicano en cada mordida. Res, pollo o mixto — tú eliges. Disponible en porciones para uno o para compartir.</p>
+        </div>
     </section>
 
-    <footer id="contacto">
-        <h2>LA GERENCIA</h2>
-        <p>RESTAURANTE & CLUB BILLAR</p>
-        <p style="margin-top: 20px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: #F5F5F5;">
-            © 2026 La Gerencia. Todos los derechos reservados.
-        </p>
+    <!-- SECCIÓN 3 -->
+    <section class="split">
+        <div class="split-text red-bg">
+            <span class="label">ESPECIAL DE LA CASA</span>
+            <h2>PLATO DE BOCA LA GERENCIA</h2>
+            <div class="gold-line"></div>
+            <p>Costilla · Chicharrones · Chorizo · Alitas · Tortilla frita · Chimol · Cuajada · Aguacate. Todo en un solo plato. $8.00</p>
+        </div>
+        <div class="split-img">
+            <img src="logo.png" alt="La Gerencia">
+        </div>
+    </section>
+
+    <!-- CTA MENÚ -->
+    <section class="menu-cta">
+        <span class="cta-label">VER TODO LO QUE TENEMOS</span>
+        <h2>NUESTRO<br>MENÚ</h2>
+        <a href="menu.html" class="btn-menu">VER MENÚ COMPLETO</a>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <span class="label">ENCUÉNTRANOS · ESCRÍBENOS</span>
+        <div class="big-number">+503 0000-0000</div>
+        <p class="sub">DISPONIBLE VÍA WHATSAPP</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-brand">LA GERENCIA</div>
+        <div class="footer-copy">
+            RESTAURANTE & CLUB BILLAR<br>
+            © 2026. Todos los derechos reservados.<br>
+            Desarrollado por Willy para La Gerencia.
+        </div>
     </footer>
 
 </body>
