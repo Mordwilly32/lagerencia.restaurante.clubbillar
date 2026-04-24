@@ -27,112 +27,88 @@
         /* ── TOP BAR ── */
         .top-bar {
             background-color: #121212;
-            border-bottom: 3px solid #C5A059;
-            padding: 18px 5%;
+            border-bottom: 6px solid #C5A059;
+            padding: 36px 5%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: #C5A059;
-            text-decoration: none;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            transition: color 0.3s;
-        }
-
-        .back-btn:hover { color: #800000; }
-        .back-btn .arrow { font-size: 1.3rem; line-height: 1; }
-
         .top-bar-brand {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
+            font-size: 5rem;
             color: #C5A059;
-            letter-spacing: 4px;
+            letter-spacing: 10px;
         }
 
         /* ── HERO ── */
         .menu-hero {
             background-color: #800000;
-            padding: 80px 5% 60px;
+            padding: 120px 5% 90px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 16px;
         }
 
         .menu-hero .label {
             font-family: 'Oswald', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 6px;
-            opacity: 0.75;
+            font-size: 1.4rem;
+            letter-spacing: 10px;
+            opacity: 0.8;
         }
 
         .menu-hero h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(4rem, 10vw, 9rem);
+            font-size: clamp(7rem, 14vw, 14rem);
             line-height: 0.88;
             color: #C5A059;
         }
 
         /* ── SECCIONES CON IMAGEN ── */
-
-        /* Layout base: imagen a la derecha */
         .menu-section {
             display: grid;
-            grid-template-columns: 1fr 420px;
-            min-height: 480px;
-            border-bottom: 1px solid #1e1e1e;
+            grid-template-columns: 1fr 600px;
+            min-height: 700px;
+            border-bottom: 2px solid #1e1e1e;
         }
 
-        /* Layout invertido: imagen a la izquierda */
         .menu-section.reverse {
-            grid-template-columns: 420px 1fr;
+            grid-template-columns: 600px 1fr;
         }
 
-        /* Contenedor de contenido (lado texto) */
         .section-content {
             display: grid;
-            grid-template-columns: 220px 1fr;
+            grid-template-columns: 340px 1fr;
         }
 
-        .menu-section.reverse .section-content {
-            order: 2;
-        }
-
-        .menu-section.reverse .section-image {
-            order: 1;
-        }
+        .menu-section.reverse .section-content { order: 2; }
+        .menu-section.reverse .section-image  { order: 1; }
 
         /* Título vertical */
         .section-title-col {
             display: flex;
             align-items: flex-start;
             justify-content: flex-end;
-            padding: 60px 36px 60px 5%;
-            border-right: 3px solid #C5A059;
+            padding: 80px 50px 80px 5%;
+            border-right: 6px solid #C5A059;
         }
 
         .section-title-col h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-size: clamp(5rem, 7vw, 8rem);
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            letter-spacing: 4px;
+            letter-spacing: 10px;
             color: #C5A059;
             line-height: 1;
         }
 
         /* Items */
         .section-items {
-            padding: 60px 6% 60px 5%;
+            padding: 80px 6% 80px 5%;
         }
 
         /* Imagen lateral */
@@ -155,7 +131,6 @@
             filter: brightness(0.9) saturate(1.2);
         }
 
-        /* Overlay sutil sobre imagen */
         .section-image::after {
             content: '';
             position: absolute;
@@ -173,7 +148,7 @@
         .block-gold  .section-content { background-color: #C5A059; color: #121212; }
         .block-red   .section-content { background-color: #800000; }
 
-        /* Ajustes para el bloque dorado */
+        /* Ajustes bloque dorado */
         .block-gold .section-title-col { border-right-color: #121212; }
         .block-gold .section-title-col h2 { color: #121212; }
         .block-gold .cat-title { color: #121212; }
@@ -184,11 +159,11 @@
         /* Sub-categorías */
         .cat-title {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.3rem;
-            letter-spacing: 3px;
+            font-size: 2.6rem;
+            letter-spacing: 4px;
             color: #C5A059;
-            margin-top: 36px;
-            margin-bottom: 16px;
+            margin-top: 50px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
         .cat-title:first-child { margin-top: 0; }
@@ -198,20 +173,20 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 12px 0;
-            border-bottom: 1px dashed rgba(245,245,245,0.15);
-            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px dashed rgba(245,245,245,0.2);
+            gap: 30px;
         }
 
         .item-name {
-            font-size: 1rem;
+            font-size: 1.8rem;
             font-weight: 400;
             flex: 1;
         }
 
         .item-price {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.15rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #C5A059;
             white-space: nowrap;
@@ -219,12 +194,12 @@
 
         /* Nota */
         .note {
-            margin-top: 28px;
-            font-size: 0.85rem;
+            margin-top: 36px;
+            font-size: 1.4rem;
             font-style: italic;
             opacity: 0.85;
-            padding: 14px 18px;
-            border-left: 3px solid #C5A059;
+            padding: 18px 24px;
+            border-left: 5px solid #C5A059;
             line-height: 1.7;
         }
 
@@ -232,63 +207,100 @@
         .especial-block {
             background-color: #C5A059;
             color: #121212;
-            padding: 80px 5%;
+            padding: 120px 5%;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
             align-items: center;
         }
 
         .especial-block h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 6vw, 6rem);
+            font-size: clamp(5rem, 9vw, 10rem);
             line-height: 0.9;
         }
 
         .especial-block .price-tag {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(4rem, 7vw, 7rem);
+            font-size: clamp(6rem, 10vw, 11rem);
             color: #800000;
             line-height: 1;
-            margin-top: 16px;
+            margin-top: 20px;
         }
 
         .especial-block p {
-            font-size: 1rem;
-            line-height: 1.9;
+            font-size: 1.7rem;
+            line-height: 2;
             opacity: 0.9;
         }
 
         /* ── FOOTER ── */
         .menu-footer {
             background-color: #121212;
-            border-top: 3px solid #C5A059;
-            padding: 50px 5%;
+            border-top: 6px solid #C5A059;
+            padding: 70px 5% 50px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 36px;
         }
 
         .menu-footer .brand {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
+            font-size: 4rem;
+            color: #C5A059;
+            letter-spacing: 8px;
+        }
+
+        .propina-aviso {
+            width: 100%;
+            background-color: #800000;
+            border-left: 10px solid #C5A059;
+            padding: 36px 44px;
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .propina-aviso .propina-pct {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6rem;
+            color: #C5A059;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .propina-aviso .propina-texto {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            line-height: 1.7;
+            color: #F5F5F5;
+        }
+
+        .propina-aviso .propina-texto strong {
+            display: block;
+            font-size: 2rem;
             color: #C5A059;
             letter-spacing: 4px;
+            margin-bottom: 6px;
         }
 
-        .menu-footer .back-link {
-            color: #C5A059;
-            text-decoration: none;
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            transition: color 0.3s;
+        /* ── RESPONSIVE intermedio ── */
+        @media (max-width: 1400px) {
+            .menu-section        { grid-template-columns: 1fr 480px; }
+            .menu-section.reverse{ grid-template-columns: 480px 1fr; }
+            .section-content     { grid-template-columns: 280px 1fr; }
         }
 
-        .menu-footer .back-link:hover { color: #800000; }
+        @media (max-width: 1100px) {
+            .menu-section        { grid-template-columns: 1fr 360px; }
+            .menu-section.reverse{ grid-template-columns: 360px 1fr; }
+            .section-content     { grid-template-columns: 240px 1fr; }
+        }
 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 900px) {
+        /* ── RESPONSIVE móvil ── */
+        @media (max-width: 800px) {
             .menu-section,
             .menu-section.reverse {
                 grid-template-columns: 1fr;
@@ -303,7 +315,7 @@
             .menu-section.reverse .section-image  { order: 1; }
 
             .section-image {
-                height: 260px;
+                height: 380px;
                 order: 1;
             }
 
@@ -314,22 +326,22 @@
 
             .section-title-col {
                 justify-content: flex-start;
-                padding: 36px 5% 20px;
+                padding: 50px 5% 28px;
                 border-right: none;
-                border-bottom: 3px solid #C5A059;
+                border-bottom: 6px solid #C5A059;
             }
 
             .section-title-col h2 {
                 writing-mode: horizontal-tb;
                 transform: none;
-                font-size: clamp(2.5rem, 7vw, 3.5rem);
+                font-size: clamp(4rem, 9vw, 6rem);
             }
 
-            .section-items { padding: 36px 5%; }
+            .section-items { padding: 50px 5%; }
 
-            .especial-block { grid-template-columns: 1fr; gap: 30px; }
+            .especial-block { grid-template-columns: 1fr; gap: 40px; }
 
-            .menu-footer { flex-direction: column; gap: 20px; text-align: center; }
+            .menu-footer { padding: 50px 5% 36px; }
         }
     </style>
 </head>
@@ -337,9 +349,6 @@
 
     <!-- TOP BAR -->
     <div class="top-bar">
-        <a href="index.html" class="back-btn">
-            <span class="arrow">←</span> VOLVER
-        </a>
         <div class="top-bar-brand">LA GERENCIA</div>
     </div>
 
@@ -367,8 +376,7 @@
         </div>
         <div class="section-image">
             <img
-                src="https://i.pinimg.com/736x/2b/3c/4d/2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e.jpg"
-                onerror="this.src='https://images.unsplash.com/photo-1432139509613-5c4255815697?w=900&q=80'"
+                src="https://images.unsplash.com/photo-1432139509613-5c4255815697?w=1200&q=85"
                 alt="Lomo de cerdo a la chimichurri"
             />
         </div>
@@ -378,8 +386,7 @@
     <div class="menu-section block-black reverse">
         <div class="section-image">
             <img
-                src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=900&q=80"
-                onerror="this.src='https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=900&q=80'"
+                src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1200&q=85"
                 alt="Tacos mexicanos"
             />
         </div>
@@ -424,8 +431,7 @@
         </div>
         <div class="section-image">
             <img
-                src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=900&q=80"
-                onerror="this.src='https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80'"
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=85"
                 alt="Boquitas variadas"
             />
         </div>
@@ -450,8 +456,8 @@
     <div class="menu-section block-black reverse">
         <div class="section-image">
             <img
-                src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=900&q=80"
-                onerror="this.src='https://images.unsplash.com/photo-1561136594-7f68f9d69f0c?w=900&q=80'"
+                src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=1200&q=85"
+                onerror="this.src='https://images.unsplash.com/photo-1561136594-7f68f9d69f0c?w=1200&q=85'"
                 alt="Cervezas y bebidas"
             />
         </div>
@@ -477,8 +483,13 @@
 
     <!-- FOOTER -->
     <div class="menu-footer">
-        <div class="brand">LA GERENCIA</div>
-        <a href="index.html" class="back-link">← VOLVER AL INICIO</a>
+        <div class="propina-aviso">
+            <div class="propina-pct">10%</div>
+            <div class="propina-texto">
+                <strong>PROPINA INCLUIDA</strong>
+                Se aplica un 10% de propina automáticamente en el cobro total de su cuenta.
+            </div>
+        </div>
     </div>
 
 </body>
