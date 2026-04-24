@@ -50,11 +50,7 @@
         }
 
         .back-btn:hover { color: #800000; }
-
-        .back-btn .arrow {
-            font-size: 1.3rem;
-            line-height: 1;
-        }
+        .back-btn .arrow { font-size: 1.3rem; line-height: 1; }
 
         .top-bar-brand {
             font-family: 'Bebas Neue', sans-serif;
@@ -63,7 +59,7 @@
             letter-spacing: 4px;
         }
 
-        /* ── HERO MENÚ ── */
+        /* ── HERO ── */
         .menu-hero {
             background-color: #800000;
             padding: 80px 5% 60px;
@@ -86,23 +82,45 @@
             color: #C5A059;
         }
 
-        /* ── SECCIONES DEL MENÚ ── */
-        .menu-block {
+        /* ── SECCIONES CON IMAGEN ── */
+
+        /* Layout base: imagen a la derecha */
+        .menu-section {
             display: grid;
-            grid-template-columns: 280px 1fr;
-            min-height: 420px;
+            grid-template-columns: 1fr 420px;
+            min-height: 480px;
             border-bottom: 1px solid #1e1e1e;
         }
 
-        .menu-block-title {
+        /* Layout invertido: imagen a la izquierda */
+        .menu-section.reverse {
+            grid-template-columns: 420px 1fr;
+        }
+
+        /* Contenedor de contenido (lado texto) */
+        .section-content {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+        }
+
+        .menu-section.reverse .section-content {
+            order: 2;
+        }
+
+        .menu-section.reverse .section-image {
+            order: 1;
+        }
+
+        /* Título vertical */
+        .section-title-col {
             display: flex;
             align-items: flex-start;
             justify-content: flex-end;
-            padding: 60px 40px 60px 5%;
+            padding: 60px 36px 60px 5%;
             border-right: 3px solid #C5A059;
         }
 
-        .menu-block-title h2 {
+        .section-title-col h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2.5rem, 4vw, 4rem);
             writing-mode: vertical-rl;
@@ -112,17 +130,52 @@
             line-height: 1;
         }
 
-        .menu-block-content {
-            padding: 60px 8% 60px 6%;
+        /* Items */
+        .section-items {
+            padding: 60px 6% 60px 5%;
         }
 
-        /* Colores de fondo por bloque */
-        .block-black { background-color: #121212; }
-        .block-gold  { background-color: #C5A059; color: #121212; }
-        .block-red   { background-color: #800000; }
+        /* Imagen lateral */
+        .section-image {
+            position: relative;
+            overflow: hidden;
+        }
 
-        .block-gold .menu-block-title { border-right-color: #121212; }
-        .block-gold .menu-block-title h2 { color: #121212; }
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.82) saturate(1.1);
+            transition: transform 0.6s ease, filter 0.6s ease;
+        }
+
+        .section-image:hover img {
+            transform: scale(1.04);
+            filter: brightness(0.9) saturate(1.2);
+        }
+
+        /* Overlay sutil sobre imagen */
+        .section-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(18,18,18,0.35) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .menu-section.reverse .section-image::after {
+            background: linear-gradient(to left, rgba(18,18,18,0.35) 0%, transparent 40%);
+        }
+
+        /* Colores de fondo */
+        .block-black .section-content { background-color: #121212; }
+        .block-gold  .section-content { background-color: #C5A059; color: #121212; }
+        .block-red   .section-content { background-color: #800000; }
+
+        /* Ajustes para el bloque dorado */
+        .block-gold .section-title-col { border-right-color: #121212; }
+        .block-gold .section-title-col h2 { color: #121212; }
         .block-gold .cat-title { color: #121212; }
         .block-gold .item-line { border-bottom-color: rgba(18,18,18,0.2); }
         .block-gold .item-price { color: #121212; }
@@ -138,7 +191,6 @@
             margin-bottom: 16px;
             text-transform: uppercase;
         }
-
         .cat-title:first-child { margin-top: 0; }
 
         /* Items */
@@ -236,38 +288,48 @@
         .menu-footer .back-link:hover { color: #800000; }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 768px) {
-            .menu-block {
+        @media (max-width: 900px) {
+            .menu-section,
+            .menu-section.reverse {
                 grid-template-columns: 1fr;
             }
 
-            .menu-block-title {
+            .section-content {
+                grid-template-columns: 1fr;
+                order: 2;
+            }
+
+            .menu-section.reverse .section-content { order: 2; }
+            .menu-section.reverse .section-image  { order: 1; }
+
+            .section-image {
+                height: 260px;
+                order: 1;
+            }
+
+            .section-image::after,
+            .menu-section.reverse .section-image::after {
+                background: linear-gradient(to top, rgba(18,18,18,0.5) 0%, transparent 50%);
+            }
+
+            .section-title-col {
                 justify-content: flex-start;
                 padding: 36px 5% 20px;
                 border-right: none;
                 border-bottom: 3px solid #C5A059;
             }
 
-            .menu-block-title h2 {
+            .section-title-col h2 {
                 writing-mode: horizontal-tb;
                 transform: none;
                 font-size: clamp(2.5rem, 7vw, 3.5rem);
             }
 
-            .menu-block-content {
-                padding: 36px 5%;
-            }
+            .section-items { padding: 36px 5%; }
 
-            .especial-block {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
+            .especial-block { grid-template-columns: 1fr; gap: 30px; }
 
-            .menu-footer {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
+            .menu-footer { flex-direction: column; gap: 20px; text-align: center; }
         }
     </style>
 </head>
@@ -287,64 +349,89 @@
         <h1>NUESTRO<br>MENÚ</h1>
     </div>
 
-    <!-- PLATOS FUERTES -->
-    <div class="menu-block block-gold">
-        <div class="menu-block-title">
-            <h2>PLATOS FUERTES</h2>
+    <!-- ══ PLATOS FUERTES — imagen DERECHA, texto izquierda ══ -->
+    <div class="menu-section block-gold">
+        <div class="section-content">
+            <div class="section-title-col">
+                <h2>PLATOS FUERTES</h2>
+            </div>
+            <div class="section-items">
+                <div class="item-line"><span class="item-name">Lomo de Cerdo a la Chimichurri</span><span class="item-price">$8.00</span></div>
+                <div class="item-line"><span class="item-name">Carne a la Plancha</span><span class="item-price">$8.00</span></div>
+                <div class="item-line"><span class="item-name">Pechuga Deshuesada</span><span class="item-price">$7.00</span></div>
+                <div class="item-line"><span class="item-name">Costilla de Cerdo Ahumada</span><span class="item-price">$8.00</span></div>
+                <div class="item-line"><span class="item-name">Filete de Cerdo al Jalapeño</span><span class="item-price">$8.00</span></div>
+                <div class="item-line"><span class="item-name">Alitas a la BBQ</span><span class="item-price">$7.00</span></div>
+                <div class="note"><strong>INCLUYE:</strong> Chimol, 2 Tortillas Fritas y Casamiento.</div>
+            </div>
         </div>
-        <div class="menu-block-content">
-            <div class="item-line"><span class="item-name">Lomo de Cerdo a la Chimichurri</span><span class="item-price">$8.00</span></div>
-            <div class="item-line"><span class="item-name">Carne a la Plancha</span><span class="item-price">$8.00</span></div>
-            <div class="item-line"><span class="item-name">Pechuga Deshuesada</span><span class="item-price">$7.00</span></div>
-            <div class="item-line"><span class="item-name">Costilla de Cerdo Ahumada</span><span class="item-price">$8.00</span></div>
-            <div class="item-line"><span class="item-name">Filete de Cerdo al Jalapeño</span><span class="item-price">$8.00</span></div>
-            <div class="item-line"><span class="item-name">Alitas a la BBQ</span><span class="item-price">$7.00</span></div>
-            <div class="note"><strong>INCLUYE:</strong> Chimol, 2 Tortillas Fritas y Casamiento.</div>
-        </div>
-    </div>
-
-    <!-- COMIDA MEXICANA -->
-    <div class="menu-block block-black">
-        <div class="menu-block-title">
-            <h2>COMIDA MEXICANA</h2>
-        </div>
-        <div class="menu-block-content">
-
-            <div class="cat-title">Burritos</div>
-            <div class="item-line"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
-            <div class="item-line"><span class="item-name">Mixto</span><span class="item-price">$6.00</span></div>
-
-            <div class="cat-title">Tacos</div>
-            <div class="item-line"><span class="item-name">Res — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
-            <div class="item-line"><span class="item-name">Pollo — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
-            <div class="item-line"><span class="item-name">Mixto — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
-
-            <div class="cat-title">Tortas</div>
-            <div class="item-line"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
-            <div class="item-line"><span class="item-name">Mixta</span><span class="item-price">$6.00</span></div>
-
-            <div class="cat-title">Gringas & Quesadillas</div>
-            <div class="item-line"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
-            <div class="item-line"><span class="item-name">Pastor</span><span class="item-price">$6.00</span></div>
-
+        <div class="section-image">
+            <img
+                src="https://i.pinimg.com/736x/2b/3c/4d/2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e.jpg"
+                onerror="this.src='https://images.unsplash.com/photo-1432139509613-5c4255815697?w=900&q=80'"
+                alt="Lomo de cerdo a la chimichurri"
+            />
         </div>
     </div>
 
-    <!-- BOQUITAS -->
-    <div class="menu-block block-red">
-        <div class="menu-block-title">
-            <h2>BOQUITAS</h2>
+    <!-- ══ COMIDA MEXICANA — imagen IZQUIERDA, texto derecha ══ -->
+    <div class="menu-section block-black reverse">
+        <div class="section-image">
+            <img
+                src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=900&q=80"
+                onerror="this.src='https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=900&q=80'"
+                alt="Tacos mexicanos"
+            />
         </div>
-        <div class="menu-block-content">
-            <div class="item-line"><span class="item-name">Costilla de Cerdo</span><span class="item-price">$2.50 c/u</span></div>
-            <div class="item-line"><span class="item-name">Chicharrones</span><span class="item-price">$2.50 c/u</span></div>
-            <div class="item-line"><span class="item-name">Chorizo</span><span class="item-price">$2.50 c/u</span></div>
-            <div class="item-line"><span class="item-name">Alitas</span><span class="item-price">$2.50 c/u</span></div>
-            <div class="note">Cada boquita incluye Tortilla Frita y Chimol.</div>
+        <div class="section-content">
+            <div class="section-title-col">
+                <h2>COMIDA MEXICANA</h2>
+            </div>
+            <div class="section-items">
+                <div class="cat-title">Burritos</div>
+                <div class="item-line"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
+                <div class="item-line"><span class="item-name">Mixto</span><span class="item-price">$6.00</span></div>
+
+                <div class="cat-title">Tacos</div>
+                <div class="item-line"><span class="item-name">Res — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
+                <div class="item-line"><span class="item-name">Pollo — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
+                <div class="item-line"><span class="item-name">Mixto — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
+
+                <div class="cat-title">Tortas</div>
+                <div class="item-line"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
+                <div class="item-line"><span class="item-name">Mixta</span><span class="item-price">$6.00</span></div>
+
+                <div class="cat-title">Gringas & Quesadillas</div>
+                <div class="item-line"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
+                <div class="item-line"><span class="item-name">Pastor</span><span class="item-price">$6.00</span></div>
+            </div>
         </div>
     </div>
 
-    <!-- ESPECIAL -->
+    <!-- ══ BOQUITAS — imagen DERECHA, texto izquierda ══ -->
+    <div class="menu-section block-red">
+        <div class="section-content">
+            <div class="section-title-col">
+                <h2>BOQUITAS</h2>
+            </div>
+            <div class="section-items">
+                <div class="item-line"><span class="item-name">Costilla de Cerdo</span><span class="item-price">$2.50 c/u</span></div>
+                <div class="item-line"><span class="item-name">Chicharrones</span><span class="item-price">$2.50 c/u</span></div>
+                <div class="item-line"><span class="item-name">Chorizo</span><span class="item-price">$2.50 c/u</span></div>
+                <div class="item-line"><span class="item-name">Alitas</span><span class="item-price">$2.50 c/u</span></div>
+                <div class="note">Cada boquita incluye Tortilla Frita y Chimol.</div>
+            </div>
+        </div>
+        <div class="section-image">
+            <img
+                src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=900&q=80"
+                onerror="this.src='https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80'"
+                alt="Boquitas variadas"
+            />
+        </div>
+    </div>
+
+    <!-- ══ ESPECIAL DE LA CASA — full width ══ -->
     <div class="especial-block">
         <div>
             <h2>ESPECIAL<br>DE LA<br>CASA</h2>
@@ -359,25 +446,32 @@
         </div>
     </div>
 
-    <!-- BEBIDAS -->
-    <div class="menu-block block-black">
-        <div class="menu-block-title">
-            <h2>BEBIDAS</h2>
+    <!-- ══ BEBIDAS — imagen IZQUIERDA, texto derecha ══ -->
+    <div class="menu-section block-black reverse">
+        <div class="section-image">
+            <img
+                src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=900&q=80"
+                onerror="this.src='https://images.unsplash.com/photo-1561136594-7f68f9d69f0c?w=900&q=80'"
+                alt="Cervezas y bebidas"
+            />
         </div>
-        <div class="menu-block-content">
+        <div class="section-content">
+            <div class="section-title-col">
+                <h2>BEBIDAS</h2>
+            </div>
+            <div class="section-items">
+                <div class="cat-title">Cervezas</div>
+                <div class="item-line"><span class="item-name">Pilsener</span><span class="item-price">$1.25</span></div>
+                <div class="item-line"><span class="item-name">Golden</span><span class="item-price">$1.25</span></div>
+                <div class="item-line"><span class="item-name">Suprema</span><span class="item-price"></span></div>
+                <div class="item-line"><span class="item-name">Corona</span><span class="item-price"></span></div>
+                <div class="item-line"><span class="item-name">Regia</span><span class="item-price"></span></div>
+                <div class="note">* Disponibles en Michelada o Mix.</div>
 
-            <div class="cat-title">Cervezas</div>
-            <div class="item-line"><span class="item-name">Pilsener</span><span class="item-price">$1.25</span></div>
-            <div class="item-line"><span class="item-name">Golden</span><span class="item-price">$1.25</span></div>
-            <div class="item-line"><span class="item-name">Suprema</span><span class="item-price"></span></div>
-            <div class="item-line"><span class="item-name">Corona</span><span class="item-price"></span></div>
-            <div class="item-line"><span class="item-name">Regia</span><span class="item-price"></span></div>
-            <div class="note">* Disponibles en Michelada o Mix.</div>
-
-            <div class="cat-title">Sin Alcohol</div>
-            <div class="item-line"><span class="item-name">Sodas — Coca Cola / Fanta / Sprite</span><span class="item-price"></span></div>
-            <div class="item-line"><span class="item-name">Limonadas</span><span class="item-price"></span></div>
-
+                <div class="cat-title">Sin Alcohol</div>
+                <div class="item-line"><span class="item-name">Sodas — Coca Cola / Fanta / Sprite</span><span class="item-price"></span></div>
+                <div class="item-line"><span class="item-name">Limonadas</span><span class="item-price"></span></div>
+            </div>
         </div>
     </div>
 
