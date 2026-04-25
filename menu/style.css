@@ -1,0 +1,353 @@
+/*
+ * © 2026 La Gerencia — Restaurante & Club Billar
+ * Todos los derechos reservados.
+ * Código desarrollado por Willy para La Gerencia.
+ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: #121212;
+    color: #F5F5F5;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ── ANIMACIONES ── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes slideRight {
+    from { opacity: 0; transform: translateX(-50px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.anim-fade-up { opacity: 0; }
+.anim-fade-in { opacity: 0; }
+.anim-slide-r { opacity: 0; }
+
+.anim-fade-up.visible  { animation: fadeUp     0.8s cubic-bezier(0.22,1,0.36,1) forwards; }
+.anim-fade-in.visible  { animation: fadeIn     0.9s ease forwards; }
+.anim-slide-r.visible  { animation: slideRight 0.75s cubic-bezier(0.22,1,0.36,1) forwards; }
+
+.d1 { animation-delay: 0.08s !important; }
+.d2 { animation-delay: 0.18s !important; }
+.d3 { animation-delay: 0.28s !important; }
+.d4 { animation-delay: 0.38s !important; }
+.d5 { animation-delay: 0.48s !important; }
+.d6 { animation-delay: 0.58s !important; }
+.d7 { animation-delay: 0.68s !important; }
+
+/* ── TOP BAR ── */
+.top-bar {
+    background-color: #121212;
+    border-bottom: 6px solid #C5A059;
+    padding: 24px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #C5A059;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    transition: color 0.3s, gap 0.3s;
+}
+.back-btn:hover { color: #800000; gap: 18px; }
+
+.top-bar-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: #C5A059;
+    letter-spacing: 8px;
+}
+
+/* ── HERO ── */
+.menu-hero {
+    background-color: #800000;
+    padding: 120px 5% 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.menu-hero .label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 10px;
+    opacity: 0.8;
+    animation: fadeUp 0.8s 0.1s ease both;
+}
+.menu-hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(7rem, 14vw, 14rem);
+    line-height: 0.88;
+    color: #C5A059;
+    animation: fadeUp 0.9s 0.3s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+/* ── SECCIONES CON IMAGEN ── */
+.menu-section {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    min-height: 480px;
+    border-bottom: 2px solid #1e1e1e;
+}
+.menu-section.reverse {
+    grid-template-columns: 400px 1fr;
+}
+
+.section-content {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+}
+.menu-section.reverse .section-content { order: 2; }
+.menu-section.reverse .section-image   { order: 1; }
+
+/* Título vertical */
+.section-title-col {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 50px 36px 50px 5%;
+    border-right: 6px solid #C5A059;
+}
+.section-title-col h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 5vw, 5.5rem);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 8px;
+    color: #C5A059;
+    line-height: 1;
+}
+
+.section-items { padding: 50px 5%; }
+
+/* Imagen lateral */
+.section-image {
+    position: relative;
+    overflow: hidden;
+}
+.section-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.82) saturate(1.1);
+    transition: transform 0.7s ease, filter 0.7s ease;
+}
+.section-image:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.9) saturate(1.2);
+}
+.section-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(18,18,18,0.35) 0%, transparent 45%);
+    pointer-events: none;
+}
+.menu-section.reverse .section-image::after {
+    background: linear-gradient(to left, rgba(18,18,18,0.35) 0%, transparent 45%);
+}
+
+/* Colores de bloque */
+.block-black .section-content { background-color: #121212; }
+.block-gold  .section-content { background-color: #C5A059; color: #121212; }
+.block-red   .section-content { background-color: #800000; }
+
+.block-gold .section-title-col    { border-right-color: #121212; }
+.block-gold .section-title-col h2 { color: #121212; }
+.block-gold .cat-title  { color: #121212; }
+.block-gold .item-line  { border-bottom-color: rgba(18,18,18,0.2); }
+.block-gold .item-price { color: #121212; }
+.block-gold .note       { border-left-color: #121212; color: #121212; }
+
+/* Sub-categorías */
+.cat-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    color: #C5A059;
+    margin-top: 36px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+.cat-title:first-child { margin-top: 0; }
+
+/* Items */
+.item-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 13px 0;
+    border-bottom: 1px dashed rgba(245,245,245,0.2);
+    gap: 20px;
+}
+.item-name {
+    font-size: 1.25rem;
+    font-weight: 400;
+    flex: 1;
+    line-height: 1.3;
+}
+.item-price {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #C5A059;
+    white-space: nowrap;
+}
+
+/* Sub-precio (valde) */
+.item-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    opacity: 0.6;
+    display: block;
+    margin-top: 3px;
+    letter-spacing: 1px;
+}
+
+/* Nota */
+.note {
+    margin-top: 36px;
+    font-size: 1.35rem;
+    font-style: italic;
+    opacity: 0.85;
+    padding: 18px 24px;
+    border-left: 5px solid #C5A059;
+    line-height: 1.7;
+}
+
+/* ── ESPECIAL FULL WIDTH ── */
+.especial-block {
+    background-color: #C5A059;
+    color: #121212;
+    padding: 60px 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+.especial-block h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 6vw, 7rem);
+    line-height: 0.88;
+}
+.especial-block .price-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 7vw, 8rem);
+    color: #800000;
+    line-height: 1;
+    margin-top: 10px;
+}
+.especial-block p {
+    font-size: 1.2rem;
+    line-height: 2;
+    opacity: 0.9;
+}
+.especial-block strong {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+/* ── FOOTER / PROPINA ── */
+.menu-footer {
+    background-color: #121212;
+    border-top: 6px solid #C5A059;
+    padding: 0;
+}
+.propina-aviso {
+    width: 100%;
+    background-color: #800000;
+    border-left: 10px solid #C5A059;
+    padding: 50px 6%;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.propina-pct {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 7vw, 7rem);
+    color: #C5A059;
+    line-height: 1;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.propina-texto {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    line-height: 1.7;
+}
+.propina-texto strong {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    color: #C5A059;
+    letter-spacing: 5px;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+.footer-copy {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem;
+    color: #F5F5F5;
+    opacity: 0.25;
+    line-height: 2;
+    padding: 28px 8%;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1400px) {
+    .menu-section         { grid-template-columns: 1fr 340px; }
+    .menu-section.reverse { grid-template-columns: 340px 1fr; }
+    .section-content      { grid-template-columns: 190px 1fr; }
+}
+@media (max-width: 1100px) {
+    .menu-section         { grid-template-columns: 1fr 260px; }
+    .menu-section.reverse { grid-template-columns: 260px 1fr; }
+    .section-content      { grid-template-columns: 160px 1fr; }
+}
+@media (max-width: 800px) {
+    .menu-section,
+    .menu-section.reverse { grid-template-columns: 1fr; }
+    .section-content { grid-template-columns: 1fr; order: 2; }
+    .menu-section.reverse .section-content { order: 2; }
+    .menu-section.reverse .section-image   { order: 1; }
+    .section-image { height: 340px; order: 1; }
+    .section-image::after,
+    .menu-section.reverse .section-image::after {
+        background: linear-gradient(to top, rgba(18,18,18,0.5) 0%, transparent 50%);
+    }
+    .section-title-col {
+        justify-content: flex-start;
+        padding: 50px 5% 28px;
+        border-right: none;
+        border-bottom: 6px solid #C5A059;
+    }
+    .section-title-col h2 {
+        writing-mode: horizontal-tb;
+        transform: none;
+        font-size: clamp(3.5rem, 9vw, 5.5rem);
+    }
+    .block-gold .section-title-col { border-bottom-color: #121212; }
+    .section-items { padding: 50px 5%; }
+    .especial-block { grid-template-columns: 1fr; gap: 40px; }
+    .propina-aviso { flex-direction: column; gap: 20px; padding: 50px 6%; }
+    .propina-pct { font-size: clamp(6rem, 18vw, 8rem); }
+}
