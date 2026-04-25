@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú — La Gerencia (Parte 1)</title>
+    <title>Menú — La Gerencia (Parte 2)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -52,7 +52,7 @@
         .d6 { animation-delay: 0.47s !important; }
         .d7 { animation-delay: 0.55s !important; }
 
-        /* ── HERO ── 180px */
+        /* ── HERO (mismo estilo, página 2) ── 180px */
         .menu-hero {
             height: 180px;
             background-color: #800000;
@@ -95,10 +95,9 @@
         .menu-section.reverse .section-content { order: 2; }
         .menu-section.reverse .section-image   { order: 1; }
 
-        /* Altura por sección */
-        .sec-platos   { height: 400px; }
-        .sec-pupusas  { height: 400px; }
-        .sec-mexicana { height: 750px; }
+        /* Alturas por sección */
+        .sec-boquitas { height: 350px; }
+        .sec-bebidas  { height: 850px; }
 
         .section-title-col {
             display: flex;
@@ -154,16 +153,9 @@
 
         /* Colores */
         .block-black .section-content { background-color: #121212; }
-        .block-gold  .section-content { background-color: #C5A059; color: #121212; }
+        .block-red   .section-content { background-color: #800000; }
 
-        .block-gold .section-title-col    { border-right-color: #121212; }
-        .block-gold .section-title-col h2 { color: #121212; }
-        .block-gold .cat-title  { color: #121212; }
-        .block-gold .item-line  { border-bottom-color: rgba(18,18,18,0.2); }
-        .block-gold .item-price { color: #121212; }
-        .block-gold .note       { border-left-color: #121212; color: #121212; }
-
-        /* Sub-categorías */
+        /* Sub-cats */
         .cat-title {
             font-family: 'Oswald', sans-serif;
             font-size: 1.35rem;
@@ -197,6 +189,14 @@
             color: #C5A059;
             white-space: nowrap;
         }
+        .item-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            display: block;
+            margin-top: 2px;
+            letter-spacing: 1px;
+        }
 
         /* Nota */
         .note {
@@ -209,7 +209,77 @@
             line-height: 1.6;
         }
 
-        /* ── FOOTER SIMPLE ── 70px */
+        /* ── ESPECIAL · 240px ── */
+        .especial-block {
+            height: 240px;
+            background-color: #C5A059;
+            color: #121212;
+            padding: 26px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            overflow: hidden;
+        }
+        .especial-block h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 4.5vw, 5rem);
+            line-height: 0.88;
+        }
+        .especial-block .price-tag {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 5vw, 5.5rem);
+            color: #800000;
+            line-height: 1;
+            margin-top: 6px;
+        }
+        .especial-block p {
+            font-size: 1rem;
+            line-height: 1.9;
+            opacity: 0.9;
+        }
+        .especial-block strong {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+        }
+
+        /* ── PROPINA · 110px ── */
+        .propina-aviso {
+            height: 110px;
+            background-color: #800000;
+            border-left: 10px solid #C5A059;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            overflow: hidden;
+        }
+        .propina-pct {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+            color: #C5A059;
+            line-height: 1;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .propina-texto {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            line-height: 1.6;
+        }
+        .propina-texto strong {
+            display: block;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.4rem, 2vw, 1.9rem);
+            color: #C5A059;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+
+        /* ── FOOTER · 70px ── */
         .menu-footer-simple {
             height: 70px;
             background-color: #121212;
@@ -231,78 +301,99 @@
     <!-- HERO · 180px -->
     <div class="menu-hero">
         <span class="label">RESTAURANTE & CLUB BILLAR</span>
-        <h1>NUESTRO MENÚ</h1>
+        <h1>BOQUITAS & BEBIDAS</h1>
     </div>
 
-    <!-- PLATOS FUERTES · 400px -->
-    <div class="menu-section block-gold sec-platos">
-        <div class="section-content">
-            <div class="section-title-col">
-                <h2 class="anim-slide-r">PLATOS FUERTES</h2>
-            </div>
-            <div class="section-items">
-                <div class="item-line anim-fade-up d1"><span class="item-name">Lomo de Cerdo a la Chimichurri</span><span class="item-price">$8.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Carne a la Plancha</span><span class="item-price">$8.00</span></div>
-                <div class="item-line anim-fade-up d3"><span class="item-name">Pechuga Deshuesada</span><span class="item-price">$7.00</span></div>
-                <div class="item-line anim-fade-up d4"><span class="item-name">Costilla de Cerdo Ahumada</span><span class="item-price">$8.00</span></div>
-                <div class="item-line anim-fade-up d5"><span class="item-name">Filete de Cerdo al Jalapeño</span><span class="item-price">$8.00</span></div>
-                <div class="item-line anim-fade-up d6"><span class="item-name">Alitas a la BBQ</span><span class="item-price">$7.00</span></div>
-                <div class="note anim-fade-up d7"><strong>INCLUYE:</strong> Chimol, 2 Tortillas Fritas y Casamiento.</div>
-            </div>
-        </div>
+    <!-- BOQUITAS · 350px -->
+    <div class="menu-section block-red reverse sec-boquitas">
         <div class="section-image anim-fade-in">
-            <img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?w=1200&q=85" alt="Platos fuertes">
-        </div>
-    </div>
-
-    <!-- PUPUSAS · 400px -->
-    <div class="menu-section block-black reverse sec-pupusas">
-        <div class="section-image anim-fade-in">
-            <img src="../imagenes/pupusas.png" alt="Pupusas salvadoreñas">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=85" alt="Boquitas variadas">
         </div>
         <div class="section-content">
             <div class="section-title-col">
-                <h2 class="anim-slide-r">PUPUSAS</h2>
+                <h2 class="anim-slide-r">BOQUITAS</h2>
             </div>
             <div class="section-items">
-                <div class="item-line anim-fade-up d1"><span class="item-name">Frijol con Queso</span><span class="item-price">$1.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Revuelta</span><span class="item-price">$1.25</span></div>
-                <div class="item-line anim-fade-up d3"><span class="item-name">Queso</span><span class="item-price">$1.25</span></div>
-                <div class="item-line anim-fade-up d4"><span class="item-name">Ayote con Queso</span><span class="item-price">$1.50</span></div>
-                <div class="item-line anim-fade-up d5"><span class="item-name">Jalapeño</span><span class="item-price">$1.50</span></div>
-                <div class="item-line anim-fade-up d6"><span class="item-name">Pollo</span><span class="item-price">$1.75</span></div>
-                <div class="item-line anim-fade-up d7"><span class="item-name">Chorizo</span><span class="item-price">$1.75</span></div>
+                <div class="item-line anim-fade-up d1"><span class="item-name">Costilla de Cerdo</span><span class="item-price">$2.50 c/u</span></div>
+                <div class="item-line anim-fade-up d2"><span class="item-name">Chicharrones</span><span class="item-price">$2.50 c/u</span></div>
+                <div class="item-line anim-fade-up d3"><span class="item-name">Chorizo</span><span class="item-price">$2.50 c/u</span></div>
+                <div class="item-line anim-fade-up d4"><span class="item-name">Alitas</span><span class="item-price">$2.50 c/u</span></div>
+                <div class="note anim-fade-up d5">Cada boquita incluye Tortilla Frita y Chimol.</div>
             </div>
         </div>
     </div>
 
-    <!-- COMIDA MEXICANA · 750px -->
-    <div class="menu-section block-gold sec-mexicana">
+    <!-- ESPECIAL DE LA CASA · 240px -->
+    <div class="especial-block">
+        <div class="anim-fade-up">
+            <h2>ESPECIAL<br>DE LA CASA</h2>
+            <div class="price-tag">$8.00</div>
+        </div>
+        <div class="anim-fade-up d2">
+            <p>
+                <strong>Plato de Boca a La Gerencia</strong><br>
+                Costilla de cerdo · Chicharrones · Chorizo · Alitas<br>
+                Tortilla frita · Chimol · Cuajada · Aguacate
+            </p>
+        </div>
+    </div>
+
+    <!-- BEBIDAS · 850px -->
+    <div class="menu-section block-black sec-bebidas">
         <div class="section-content">
             <div class="section-title-col">
-                <h2 class="anim-slide-r">COMIDA MEXICANA</h2>
+                <h2 class="anim-slide-r">BEBIDAS</h2>
             </div>
             <div class="section-items">
-                <div class="cat-title anim-fade-up">Burritos</div>
-                <div class="item-line anim-fade-up d1"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Mixto</span><span class="item-price">$6.00</span></div>
+                <div class="cat-title anim-fade-up">Cervezas</div>
+                <div class="item-line anim-fade-up d1">
+                    <span class="item-name">Pilsener<span class="item-sub">Valde de 8 = $9.50</span></span>
+                    <span class="item-price">$1.25</span>
+                </div>
+                <div class="item-line anim-fade-up d2">
+                    <span class="item-name">Golden<span class="item-sub">Valde de 8 = $9.50</span></span>
+                    <span class="item-price">$1.25</span>
+                </div>
+                <div class="item-line anim-fade-up d3">
+                    <span class="item-name">Suprema<span class="item-sub">Valde de 8 = $11.00</span></span>
+                    <span class="item-price">$1.50</span>
+                </div>
+                <div class="item-line anim-fade-up d4">
+                    <span class="item-name">Corona<span class="item-sub">Valde de 8 = $15.00</span></span>
+                    <span class="item-price">$2.00</span>
+                </div>
+                <div class="item-line anim-fade-up d5">
+                    <span class="item-name">Regia / Chola</span>
+                    <span class="item-price">$2.75</span>
+                </div>
+                <div class="note anim-fade-up d6">
+                    Michelada disponible · Mix $3.50 (c/valde)
+                </div>
 
-                <div class="cat-title anim-fade-up">Tacos</div>
-                <div class="item-line anim-fade-up d1"><span class="item-name">Res — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Pollo — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
-                <div class="item-line anim-fade-up d3"><span class="item-name">Mixto — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
-
-                <div class="cat-title anim-fade-up">Tortas</div>
-                <div class="item-line anim-fade-up d1"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Mixta</span><span class="item-price">$6.00</span></div>
-
-                <div class="cat-title anim-fade-up">Gringas & Quesadillas</div>
-                <div class="item-line anim-fade-up d1"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Pastor</span><span class="item-price">$6.00</span></div>
+                <div class="cat-title anim-fade-up" style="margin-top: 22px;">Sin Alcohol</div>
+                <div class="item-line anim-fade-up d1"><span class="item-name">Coca Cola</span><span class="item-price">$1.00</span></div>
+                <div class="item-line anim-fade-up d2"><span class="item-name">Fanta</span><span class="item-price">$1.00</span></div>
+                <div class="item-line anim-fade-up d3"><span class="item-name">Sprite</span><span class="item-price">$1.00</span></div>
+                <div class="item-line anim-fade-up d4"><span class="item-name">Limonada Natural</span><span class="item-price">$2.00</span></div>
+                <div class="item-line anim-fade-up d5"><span class="item-name">Limonada con Hierba</span><span class="item-price">$2.75</span></div>
+                <div class="item-line anim-fade-up d6"><span class="item-name">Limonada con Fresa</span><span class="item-price">$3.50</span></div>
+                <div class="item-line anim-fade-up d7"><span class="item-name">Café</span><span class="item-price">$0.50</span></div>
             </div>
         </div>
         <div class="section-image anim-fade-in">
-            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1200&q=85" alt="Tacos mexicanos">
+            <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=1200&q=85"
+                 onerror="this.src='https://images.unsplash.com/photo-1536935338788-846bb9981813?w=1200&q=85'"
+                 alt="Bebidas">
+        </div>
+    </div>
+
+    <!-- PROPINA · 110px -->
+    <div class="propina-aviso anim-fade-up">
+        <div class="propina-pct">10%</div>
+        <div class="propina-texto">
+            <strong>PROPINA INCLUIDA</strong>
+            Se aplica un 10% de propina automáticamente en el cobro total de su cuenta.<br>
+            Gracias por su preferencia — La Gerencia.
         </div>
     </div>
 
