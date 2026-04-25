@@ -117,17 +117,17 @@
         /* ── SECCIONES CON IMAGEN ── */
         .menu-section {
             display: grid;
-            grid-template-columns: 1fr 560px;
-            min-height: 700px;
+            grid-template-columns: 1fr 400px;
+            min-height: 480px;
             border-bottom: 2px solid #1e1e1e;
         }
         .menu-section.reverse {
-            grid-template-columns: 560px 1fr;
+            grid-template-columns: 400px 1fr;
         }
 
         .section-content {
             display: grid;
-            grid-template-columns: 320px 1fr;
+            grid-template-columns: 220px 1fr;
         }
         .menu-section.reverse .section-content { order: 2; }
         .menu-section.reverse .section-image   { order: 1; }
@@ -137,20 +137,20 @@
             display: flex;
             align-items: flex-start;
             justify-content: flex-end;
-            padding: 80px 50px 80px 5%;
+            padding: 50px 36px 50px 5%;
             border-right: 6px solid #C5A059;
         }
         .section-title-col h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(5rem, 7vw, 8rem);
+            font-size: clamp(3.5rem, 5vw, 5.5rem);
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            letter-spacing: 10px;
+            letter-spacing: 8px;
             color: #C5A059;
             line-height: 1;
         }
 
-        .section-items { padding: 80px 6% 80px 5%; }
+        .section-items { padding: 50px 5%; }
 
         /* Imagen lateral */
         .section-image {
@@ -195,11 +195,11 @@
         /* Sub-cats */
         .cat-title {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.4rem;
+            font-size: 1.8rem;
             letter-spacing: 4px;
             color: #C5A059;
-            margin-top: 50px;
-            margin-bottom: 20px;
+            margin-top: 36px;
+            margin-bottom: 14px;
             text-transform: uppercase;
         }
         .cat-title:first-child { margin-top: 0; }
@@ -209,19 +209,19 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 18px 0;
+            padding: 13px 0;
             border-bottom: 1px dashed rgba(245,245,245,0.2);
-            gap: 30px;
+            gap: 20px;
         }
         .item-name  {
-            font-size: 1.65rem;
+            font-size: 1.25rem;
             font-weight: 400;
             flex: 1;
             line-height: 1.3;
         }
         .item-price {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.9rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #C5A059;
             white-space: nowrap;
@@ -281,82 +281,45 @@
             letter-spacing: 2px;
         }
 
-        /* ── FOOTER ── */
+        /* ── FOOTER / PROPINA ── */
         .menu-footer {
             background-color: #121212;
             border-top: 6px solid #C5A059;
-            padding: 70px 5% 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
-            text-align: center;
-        }
-        .menu-footer .footer-icon {
-            font-size: 3.5rem;
-            filter: drop-shadow(0 0 14px rgba(197,160,89,0.4));
-        }
-        .menu-footer .brand {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(4rem, 9vw, 9rem);
-            color: #C5A059;
-            letter-spacing: 10px;
-            line-height: 0.9;
-        }
-        .menu-footer .footer-sub {
-            font-family: 'Oswald', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 8px;
-            color: #F5F5F5;
-            opacity: 0.35;
-        }
-        .menu-footer .footer-divider {
-            width: 70px; height: 2px;
-            background-color: #C5A059;
-            opacity: 0.4;
+            padding: 0;
         }
 
         .propina-aviso {
             width: 100%;
-            max-width: 900px;
             background-color: #800000;
-            border-left: 10px solid #C5A059;
-            padding: 40px 50px;
+            border-left: 14px solid #C5A059;
+            padding: 90px 8%;
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 60px;
         }
         .propina-pct {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 6rem;
+            font-size: clamp(8rem, 14vw, 14rem);
             color: #C5A059;
             line-height: 1;
             white-space: nowrap;
+            flex-shrink: 0;
         }
         .propina-texto {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             letter-spacing: 2px;
-            line-height: 1.7;
+            line-height: 1.8;
         }
         .propina-texto strong {
             display: block;
-            font-size: 2rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 4vw, 4rem);
             color: #C5A059;
-            letter-spacing: 4px;
-            margin-bottom: 8px;
+            letter-spacing: 6px;
+            margin-bottom: 12px;
+            line-height: 1;
         }
-
-        .back-footer {
-            color: #C5A059;
-            text-decoration: none;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 4px;
-            opacity: 0.5;
-            transition: opacity 0.3s;
-        }
-        .back-footer:hover { opacity: 1; }
 
         .footer-copy {
             font-family: 'Montserrat', sans-serif;
@@ -364,18 +327,19 @@
             color: #F5F5F5;
             opacity: 0.25;
             line-height: 2;
+            padding: 28px 8%;
         }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1400px) {
-            .menu-section         { grid-template-columns: 1fr 440px; }
-            .menu-section.reverse { grid-template-columns: 440px 1fr; }
-            .section-content      { grid-template-columns: 260px 1fr; }
-        }
-        @media (max-width: 1100px) {
             .menu-section         { grid-template-columns: 1fr 340px; }
             .menu-section.reverse { grid-template-columns: 340px 1fr; }
-            .section-content      { grid-template-columns: 220px 1fr; }
+            .section-content      { grid-template-columns: 190px 1fr; }
+        }
+        @media (max-width: 1100px) {
+            .menu-section         { grid-template-columns: 1fr 260px; }
+            .menu-section.reverse { grid-template-columns: 260px 1fr; }
+            .section-content      { grid-template-columns: 160px 1fr; }
         }
         @media (max-width: 800px) {
             .menu-section,
@@ -402,7 +366,8 @@
             .block-gold .section-title-col { border-bottom-color: #121212; }
             .section-items { padding: 50px 5%; }
             .especial-block { grid-template-columns: 1fr; gap: 40px; }
-            .propina-aviso { flex-direction: column; gap: 20px; text-align: center; }
+            .propina-aviso { flex-direction: column; gap: 20px; padding: 50px 6%; }
+            .propina-pct { font-size: clamp(6rem, 18vw, 8rem); }
         }
     </style>
 </head>
@@ -444,9 +409,9 @@
     <!-- ══ PUPUSAS ══ -->
     <div class="menu-section block-black reverse">
         <div class="section-image anim-fade-in">
-            <img src="https://images.unsplash.com/photo-1604866830893-c13cafa515d5?w=1200&q=85"
+            <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=1200&q=85"
                  onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=1200&q=85'"
-                 alt="Pupusas">
+                 alt="Pupusas salvadoreñas">
         </div>
         <div class="section-content">
             <div class="section-title-col">
@@ -583,19 +548,11 @@
             <div class="propina-pct">10%</div>
             <div class="propina-texto">
                 <strong>PROPINA INCLUIDA</strong>
-                Se aplica un 10% de propina automáticamente en el cobro total de su cuenta.
+                Se aplica un 10% de propina automáticamente en el cobro total de su cuenta.<br>
+                Gracias por su preferencia — La Gerencia.
             </div>
         </div>
-
-        <div class="footer-icon anim-fade-up d2">🎱</div>
-        <div class="brand anim-fade-up d3">LA GERENCIA</div>
-        <div class="footer-sub anim-fade-up d4">RESTAURANTE & CLUB BILLAR</div>
-        <div class="footer-divider"></div>
-        <a href="index.html" class="back-footer anim-fade-up d5">← VOLVER AL INICIO</a>
-        <div class="footer-copy anim-fade-up d6">
-            © 2026. Todos los derechos reservados.<br>
-            Desarrollado por Willy para La Gerencia.
-        </div>
+        <div class="footer-copy">© 2026 La Gerencia. Desarrollado por Willy.</div>
     </div>
 
     <script>
