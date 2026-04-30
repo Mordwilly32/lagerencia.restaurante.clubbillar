@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú — La Gerencia</title>
+    <title>Menú — La Gerencia (Parte 2)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -11,8 +11,7 @@
     <style>
         /*
          * © 2026 La Gerencia — Restaurante & Club Billar
-         * Todos los derechos reservados.
-         * Código desarrollado por Willy para La Gerencia.
+         * Desarrollado por Willy para La Gerencia.
          */
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,140 +21,112 @@
             color: #F5F5F5;
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+            /* ── ALTURA FIJA TOTAL ── */
+            height: 1800px;
+            overflow: hidden;
         }
 
-        /* ── ANIMACIONES ── */
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(50px); }
+            from { opacity: 0; transform: translateY(30px); }
             to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
+        @keyframes fadeIn    { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideRight {
-            from { opacity: 0; transform: translateX(-50px); }
+            from { opacity: 0; transform: translateX(-40px); }
             to   { opacity: 1; transform: translateX(0); }
         }
-        @keyframes widthGrow {
-            from { width: 0; }
-            to   { width: 100%; }
-        }
 
-        .anim-fade-up   { opacity: 0; }
-        .anim-fade-in   { opacity: 0; }
-        .anim-slide-r   { opacity: 0; }
+        .anim-fade-up  { opacity: 0; }
+        .anim-fade-in  { opacity: 0; }
+        .anim-slide-r  { opacity: 0; }
 
-        .anim-fade-up.visible   { animation: fadeUp    0.8s cubic-bezier(0.22,1,0.36,1) forwards; }
-        .anim-fade-in.visible   { animation: fadeIn    0.9s ease forwards; }
-        .anim-slide-r.visible   { animation: slideRight 0.75s cubic-bezier(0.22,1,0.36,1) forwards; }
+        .anim-fade-up.visible  { animation: fadeUp     0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
+        .anim-fade-in.visible  { animation: fadeIn     0.8s ease forwards; }
+        .anim-slide-r.visible  { animation: slideRight 0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
 
-        .d1 { animation-delay: 0.08s !important; }
-        .d2 { animation-delay: 0.18s !important; }
-        .d3 { animation-delay: 0.28s !important; }
-        .d4 { animation-delay: 0.38s !important; }
-        .d5 { animation-delay: 0.48s !important; }
-        .d6 { animation-delay: 0.58s !important; }
-        .d7 { animation-delay: 0.68s !important; }
+        .d1 { animation-delay: 0.07s !important; }
+        .d2 { animation-delay: 0.15s !important; }
+        .d3 { animation-delay: 0.23s !important; }
+        .d4 { animation-delay: 0.31s !important; }
+        .d5 { animation-delay: 0.39s !important; }
+        .d6 { animation-delay: 0.47s !important; }
+        .d7 { animation-delay: 0.55s !important; }
 
-        /* ── TOP BAR ── */
-        .top-bar {
-            background-color: #121212;
-            border-bottom: 6px solid #C5A059;
-            padding: 24px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            color: #C5A059;
-            text-decoration: none;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            transition: color 0.3s, gap 0.3s;
-        }
-        .back-btn:hover { color: #800000; gap: 18px; }
-
-        .top-bar-brand {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            color: #C5A059;
-            letter-spacing: 8px;
-        }
-
-        /* ── HERO ── */
+        /* ── HERO (mismo estilo, página 2) ── 180px */
         .menu-hero {
+            height: 180px;
             background-color: #800000;
-            padding: 120px 5% 90px;
+            padding: 28px 5%;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            justify-content: center;
+            gap: 6px;
+            overflow: hidden;
         }
         .menu-hero .label {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 10px;
+            font-size: 0.95rem;
+            letter-spacing: 8px;
             opacity: 0.8;
-            animation: fadeUp 0.8s 0.1s ease both;
+            animation: fadeUp 0.7s 0.1s ease both;
         }
         .menu-hero h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(7rem, 14vw, 14rem);
+            font-size: clamp(4rem, 8vw, 8rem);
             line-height: 0.88;
             color: #C5A059;
-            animation: fadeUp 0.9s 0.3s cubic-bezier(0.22,1,0.36,1) both;
+            animation: fadeUp 0.8s 0.2s cubic-bezier(0.22,1,0.36,1) both;
         }
 
-        /* ── SECCIONES CON IMAGEN ── */
+        /* ── SECCIONES ── */
         .menu-section {
             display: grid;
-            grid-template-columns: 1fr 400px;
-            min-height: 480px;
+            grid-template-columns: 1fr 360px;
             border-bottom: 2px solid #1e1e1e;
+            overflow: hidden;
         }
-        .menu-section.reverse {
-            grid-template-columns: 400px 1fr;
-        }
+        .menu-section.reverse { grid-template-columns: 360px 1fr; }
 
         .section-content {
             display: grid;
-            grid-template-columns: 220px 1fr;
+            grid-template-columns: 190px 1fr;
+            height: 100%;
         }
         .menu-section.reverse .section-content { order: 2; }
         .menu-section.reverse .section-image   { order: 1; }
 
-        /* Título vertical */
+        /* Alturas por sección */
+        .sec-boquitas { height: 350px; }
+        .sec-bebidas  { height: 850px; }
+
         .section-title-col {
             display: flex;
             align-items: flex-start;
             justify-content: flex-end;
-            padding: 50px 36px 50px 5%;
+            padding: 28px 24px 28px 5%;
             border-right: 6px solid #C5A059;
+            height: 100%;
         }
         .section-title-col h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3.5rem, 5vw, 5.5rem);
+            font-size: clamp(2.8rem, 4vw, 4.2rem);
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            letter-spacing: 8px;
+            letter-spacing: 6px;
             color: #C5A059;
             line-height: 1;
         }
 
-        .section-items { padding: 50px 5%; }
+        .section-items {
+            padding: 28px 5%;
+            height: 100%;
+            overflow: hidden;
+        }
 
-        /* Imagen lateral */
         .section-image {
             position: relative;
             overflow: hidden;
+            height: 100%;
         }
         .section-image img {
             width: 100%;
@@ -180,26 +151,18 @@
             background: linear-gradient(to left, rgba(18,18,18,0.35) 0%, transparent 45%);
         }
 
-        /* Colores bloque */
+        /* Colores */
         .block-black .section-content { background-color: #121212; }
-        .block-gold  .section-content { background-color: #C5A059; color: #121212; }
         .block-red   .section-content { background-color: #800000; }
-
-        .block-gold .section-title-col   { border-right-color: #121212; }
-        .block-gold .section-title-col h2 { color: #121212; }
-        .block-gold .cat-title  { color: #121212; }
-        .block-gold .item-line  { border-bottom-color: rgba(18,18,18,0.2); }
-        .block-gold .item-price { color: #121212; }
-        .block-gold .note       { border-left-color: #121212; color: #121212; }
 
         /* Sub-cats */
         .cat-title {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            letter-spacing: 4px;
+            font-size: 1.35rem;
+            letter-spacing: 3px;
             color: #C5A059;
-            margin-top: 36px;
-            margin-bottom: 14px;
+            margin-top: 18px;
+            margin-bottom: 6px;
             text-transform: uppercase;
         }
         .cat-title:first-child { margin-top: 0; }
@@ -209,97 +172,92 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 13px 0;
+            padding: 7px 0;
             border-bottom: 1px dashed rgba(245,245,245,0.2);
-            gap: 20px;
+            gap: 16px;
         }
-        .item-name  {
-            font-size: 1.25rem;
+        .item-name {
+            font-size: 1.05rem;
             font-weight: 400;
             flex: 1;
             line-height: 1.3;
         }
         .item-price {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #C5A059;
             white-space: nowrap;
         }
-
-        /* Sub-precio (valde) */
         .item-sub {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: 0.85rem;
             opacity: 0.6;
             display: block;
-            margin-top: 3px;
+            margin-top: 2px;
             letter-spacing: 1px;
         }
 
         /* Nota */
         .note {
-            margin-top: 36px;
-            font-size: 1.35rem;
+            margin-top: 18px;
+            font-size: 1.05rem;
             font-style: italic;
             opacity: 0.85;
-            padding: 18px 24px;
+            padding: 12px 18px;
             border-left: 5px solid #C5A059;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
-        /* ── ESPECIAL FULL WIDTH ── */
+        /* ── ESPECIAL · 240px ── */
         .especial-block {
+            height: 240px;
             background-color: #C5A059;
             color: #121212;
-            padding: 60px 5%;
+            padding: 26px 5%;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 40px;
             align-items: center;
+            overflow: hidden;
         }
         .especial-block h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3.5rem, 6vw, 7rem);
+            font-size: clamp(2.5rem, 4.5vw, 5rem);
             line-height: 0.88;
         }
         .especial-block .price-tag {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(4rem, 7vw, 8rem);
+            font-size: clamp(3rem, 5vw, 5.5rem);
             color: #800000;
             line-height: 1;
-            margin-top: 10px;
+            margin-top: 6px;
         }
         .especial-block p {
-            font-size: 1.2rem;
-            line-height: 2;
+            font-size: 1rem;
+            line-height: 1.9;
             opacity: 0.9;
         }
         .especial-block strong {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             letter-spacing: 2px;
         }
 
-        /* ── FOOTER / PROPINA ── */
-        .menu-footer {
-            background-color: #121212;
-            border-top: 6px solid #C5A059;
-            padding: 0;
-        }
-
+        /* ── PROPINA · 110px ── */
         .propina-aviso {
-            width: 100%;
+            height: 110px;
             background-color: #800000;
             border-left: 10px solid #C5A059;
-            padding: 50px 6%;
+            padding: 0 6%;
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 32px;
+            overflow: hidden;
         }
         .propina-pct {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(4rem, 7vw, 7rem);
+            font-size: clamp(2.8rem, 4.5vw, 4.5rem);
             color: #C5A059;
             line-height: 1;
             white-space: nowrap;
@@ -307,158 +265,47 @@
         }
         .propina-texto {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            line-height: 1.7;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            line-height: 1.6;
         }
         .propina-texto strong {
             display: block;
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+            font-size: clamp(1.4rem, 2vw, 1.9rem);
             color: #C5A059;
-            letter-spacing: 5px;
-            margin-bottom: 8px;
+            letter-spacing: 4px;
+            margin-bottom: 4px;
             line-height: 1;
         }
 
-        .footer-copy {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.72rem;
-            color: #F5F5F5;
-            opacity: 0.25;
-            line-height: 2;
-            padding: 28px 8%;
+        /* ── FOOTER · 70px ── */
+        .menu-footer-simple {
+            height: 70px;
+            background-color: #121212;
+            border-top: 6px solid #C5A059;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1400px) {
-            .menu-section         { grid-template-columns: 1fr 340px; }
-            .menu-section.reverse { grid-template-columns: 340px 1fr; }
-            .section-content      { grid-template-columns: 190px 1fr; }
-        }
-        @media (max-width: 1100px) {
-            .menu-section         { grid-template-columns: 1fr 260px; }
-            .menu-section.reverse { grid-template-columns: 260px 1fr; }
-            .section-content      { grid-template-columns: 160px 1fr; }
-        }
-        @media (max-width: 800px) {
-            .menu-section,
-            .menu-section.reverse { grid-template-columns: 1fr; }
-            .section-content { grid-template-columns: 1fr; order: 2; }
-            .menu-section.reverse .section-content { order: 2; }
-            .menu-section.reverse .section-image   { order: 1; }
-            .section-image { height: 340px; order: 1; }
-            .section-image::after,
-            .menu-section.reverse .section-image::after {
-                background: linear-gradient(to top, rgba(18,18,18,0.5) 0%, transparent 50%);
-            }
-            .section-title-col {
-                justify-content: flex-start;
-                padding: 50px 5% 28px;
-                border-right: none;
-                border-bottom: 6px solid #C5A059;
-            }
-            .section-title-col h2 {
-                writing-mode: horizontal-tb;
-                transform: none;
-                font-size: clamp(3.5rem, 9vw, 5.5rem);
-            }
-            .block-gold .section-title-col { border-bottom-color: #121212; }
-            .section-items { padding: 50px 5%; }
-            .especial-block { grid-template-columns: 1fr; gap: 40px; }
-            .propina-aviso { flex-direction: column; gap: 20px; padding: 50px 6%; }
-            .propina-pct { font-size: clamp(6rem, 18vw, 8rem); }
+        .footer-brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            color: #C5A059;
+            letter-spacing: 10px;
         }
     </style>
 </head>
 <body>
 
-    <!-- TOP BAR -->
-    <div class="top-bar">
-        <a href="index.html" class="back-btn">← VOLVER</a>
-        <div class="top-bar-brand">LA GERENCIA</div>
-    </div>
-
-    <!-- HERO -->
+    <!-- HERO · 180px -->
     <div class="menu-hero">
         <span class="label">RESTAURANTE & CLUB BILLAR</span>
-        <h1>NUESTRO<br>MENÚ</h1>
+        <h1>BOQUITAS & BEBIDAS</h1>
     </div>
 
-    <!-- ══ PLATOS FUERTES ══ -->
-    <div class="menu-section block-gold">
-        <div class="section-content">
-            <div class="section-title-col">
-                <h2 class="anim-slide-r">PLATOS FUERTES</h2>
-            </div>
-            <div class="section-items">
-                <div class="item-line anim-fade-up d1"><span class="item-name">Lomo de Cerdo a la Chimichurri</span><span class="item-price">$8.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Carne a la Plancha</span><span class="item-price">$8.00</span></div>
-                <div class="item-line anim-fade-up d3"><span class="item-name">Pechuga Deshuesada</span><span class="item-price">$7.00</span></div>
-                <div class="item-line anim-fade-up d4"><span class="item-name">Costilla de Cerdo Ahumada</span><span class="item-price">$8.00</span></div>
-                <div class="item-line anim-fade-up d5"><span class="item-name">Filete de Cerdo al Jalapeño</span><span class="item-price">$8.00</span></div>
-                <div class="item-line anim-fade-up d6"><span class="item-name">Alitas a la BBQ</span><span class="item-price">$7.00</span></div>
-                <div class="note anim-fade-up d7"><strong>INCLUYE:</strong> Chimol, 2 Tortillas Fritas y Casamiento.</div>
-            </div>
-        </div>
-        <div class="section-image anim-fade-in">
-            <img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?w=1200&q=85" alt="Platos fuertes">
-        </div>
-    </div>
-
-    <!-- ══ PUPUSAS ══ -->
-    <div class="menu-section block-black reverse">
-        <div class="section-image anim-fade-in">
-            <img src="imagenes/pupusas.png" alt="Pupusas salvadoreñas">
-        </div>
-        <div class="section-content">
-            <div class="section-title-col">
-                <h2 class="anim-slide-r">PUPUSAS</h2>
-            </div>
-            <div class="section-items">
-                <div class="item-line anim-fade-up d1"><span class="item-name">Frijol con Queso</span><span class="item-price">$1.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Revuelta</span><span class="item-price">$1.25</span></div>
-                <div class="item-line anim-fade-up d3"><span class="item-name">Queso</span><span class="item-price">$1.25</span></div>
-                <div class="item-line anim-fade-up d4"><span class="item-name">Ayote con Queso</span><span class="item-price">$1.50</span></div>
-                <div class="item-line anim-fade-up d5"><span class="item-name">Jalapeño</span><span class="item-price">$1.50</span></div>
-                <div class="item-line anim-fade-up d6"><span class="item-name">Pollo</span><span class="item-price">$1.75</span></div>
-                <div class="item-line anim-fade-up d7"><span class="item-name">Chorizo</span><span class="item-price">$1.75</span></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ══ COMIDA MEXICANA ══ -->
-    <div class="menu-section block-gold">
-        <div class="section-content">
-            <div class="section-title-col">
-                <h2 class="anim-slide-r">COMIDA MEXICANA</h2>
-            </div>
-            <div class="section-items">
-                <div class="cat-title anim-fade-up">Burritos</div>
-                <div class="item-line anim-fade-up d1"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Mixto</span><span class="item-price">$6.00</span></div>
-
-                <div class="cat-title anim-fade-up">Tacos</div>
-                <div class="item-line anim-fade-up d1"><span class="item-name">Res — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Pollo — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
-                <div class="item-line anim-fade-up d3"><span class="item-name">Mixto — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
-
-                <div class="cat-title anim-fade-up">Tortas</div>
-                <div class="item-line anim-fade-up d1"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Mixta</span><span class="item-price">$6.00</span></div>
-
-                <div class="cat-title anim-fade-up">Gringas & Quesadillas</div>
-                <div class="item-line anim-fade-up d1"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
-                <div class="item-line anim-fade-up d2"><span class="item-name">Pastor</span><span class="item-price">$6.00</span></div>
-            </div>
-        </div>
-        <div class="section-image anim-fade-in">
-            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1200&q=85" alt="Tacos mexicanos">
-        </div>
-    </div>
-
-    <!-- ══ BOQUITAS ══ -->
-    <div class="menu-section block-red reverse">
+    <!-- BOQUITAS · 350px -->
+    <div class="menu-section block-red reverse sec-boquitas">
         <div class="section-image anim-fade-in">
             <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=85" alt="Boquitas variadas">
         </div>
@@ -476,23 +323,23 @@
         </div>
     </div>
 
-    <!-- ══ ESPECIAL DE LA CASA ══ -->
+    <!-- ESPECIAL DE LA CASA · 240px -->
     <div class="especial-block">
         <div class="anim-fade-up">
-            <h2>ESPECIAL<br>DE LA<br>CASA</h2>
+            <h2>ESPECIAL<br>DE LA CASA</h2>
             <div class="price-tag">$8.00</div>
         </div>
         <div class="anim-fade-up d2">
             <p>
-                <strong>Plato de Boca a La Gerencia</strong><br><br>
+                <strong>Plato de Boca a La Gerencia</strong><br>
                 Costilla de cerdo · Chicharrones · Chorizo · Alitas<br>
                 Tortilla frita · Chimol · Cuajada · Aguacate
             </p>
         </div>
     </div>
 
-    <!-- ══ BEBIDAS ══ -->
-    <div class="menu-section block-black">
+    <!-- BEBIDAS · 850px -->
+    <div class="menu-section block-black sec-bebidas">
         <div class="section-content">
             <div class="section-title-col">
                 <h2 class="anim-slide-r">BEBIDAS</h2>
@@ -523,7 +370,7 @@
                     Michelada disponible · Mix $3.50 (c/valde)
                 </div>
 
-                <div class="cat-title anim-fade-up" style="margin-top: 50px;">Sin Alcohol</div>
+                <div class="cat-title anim-fade-up" style="margin-top: 22px;">Sin Alcohol</div>
                 <div class="item-line anim-fade-up d1"><span class="item-name">Coca Cola</span><span class="item-price">$1.00</span></div>
                 <div class="item-line anim-fade-up d2"><span class="item-name">Fanta</span><span class="item-price">$1.00</span></div>
                 <div class="item-line anim-fade-up d3"><span class="item-name">Sprite</span><span class="item-price">$1.00</span></div>
@@ -540,31 +387,27 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <div class="menu-footer">
-        <div class="propina-aviso anim-fade-up">
-            <div class="propina-pct">10%</div>
-            <div class="propina-texto">
-                <strong>PROPINA INCLUIDA</strong>
-                Se aplica un 10% de propina automáticamente en el cobro total de su cuenta.<br>
-                Gracias por su preferencia — La Gerencia.
-            </div>
+    <!-- PROPINA · 110px -->
+    <div class="propina-aviso anim-fade-up">
+        <div class="propina-pct">10%</div>
+        <div class="propina-texto">
+            <strong>PROPINA INCLUIDA</strong>
+            Se aplica un 10% de propina automáticamente en el cobro total de su cuenta.<br>
+            Gracias por su preferencia — La Gerencia.
         </div>
-        <div class="footer-copy">© 2026 La Gerencia. Desarrollado por Willy.</div>
+    </div>
+
+    <!-- FOOTER · 70px -->
+    <div class="menu-footer-simple">
+        <div class="footer-brand">LA GERENCIA</div>
     </div>
 
     <script>
         const els = document.querySelectorAll('.anim-fade-up, .anim-fade-in, .anim-slide-r');
-        const obs = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    obs.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.12 });
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.08 });
         els.forEach(el => obs.observe(el));
     </script>
-
 </body>
 </html>
