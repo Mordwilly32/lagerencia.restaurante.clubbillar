@@ -16,10 +16,11 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ══ PÁGINA FIJA: 2600px — igual que Parte 2 ══ */
+        /* ══ PÁGINA FIJA: 3200px — igual que Parte 2 ══ */
+        /* 460 + 820 + 780 + 1060 + 80 = 3200 */
         html, body {
             width: 100%;
-            height: 2600px;
+            height: 3200px;
             overflow: hidden;
             background-color: #121212;
             color: #F5F5F5;
@@ -29,81 +30,82 @@
         .page-wrapper {
             display: flex;
             flex-direction: column;
-            height: 2600px;
+            height: 3200px;
         }
 
-        /* ══ HERO: 380px ══ */
-        /* 380 + 680 + 640 + 820 + 80 = 2600 */
+        /* ══ HERO: 460px ══ */
         .menu-hero {
-            height: 380px;
+            height: 460px;
             flex-shrink: 0;
             background-color: #800000;
             padding: 0 6%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             overflow: hidden;
         }
         .menu-hero .label {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.15rem;
-            letter-spacing: 10px;
+            font-size: 1.6rem;
+            letter-spacing: 12px;
             opacity: 0.8;
         }
         .menu-hero h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(6rem, 11vw, 10.5rem);
+            font-size: clamp(7rem, 13vw, 13rem);
             line-height: 0.88;
             color: #C5A059;
         }
 
-        /* ══ SECCIONES CON IMAGEN ══ */
+        /* ══ SECCIONES ══ */
         .menu-section {
             display: grid;
-            grid-template-columns: 1fr 400px;
+            grid-template-columns: 1fr 420px;
             overflow: hidden;
             border-bottom: 2px solid #1e1e1e;
             flex-shrink: 0;
         }
         .menu-section.reverse {
-            grid-template-columns: 400px 1fr;
+            grid-template-columns: 420px 1fr;
         }
 
-        .h-platos   { height: 680px; }
-        .h-pupusas  { height: 640px; }
-        .h-mexicana { height: 820px; }
+        .h-platos   { height: 820px; }
+        .h-pupusas  { height: 780px; }
+        .h-mexicana { height: 1060px; }
 
         .section-content {
             display: grid;
-            grid-template-columns: 200px 1fr;
+            grid-template-columns: 230px 1fr;
             overflow: hidden;
         }
         .menu-section.reverse .section-content { order: 2; }
         .menu-section.reverse .section-image   { order: 1; }
 
+        /* Título vertical */
         .section-title-col {
             display: flex;
             align-items: flex-start;
             justify-content: flex-end;
-            padding: 50px 30px 50px 5%;
-            border-right: 6px solid #C5A059;
+            padding: 55px 32px 55px 5%;
+            border-right: 7px solid #C5A059;
         }
         .section-title-col h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3.2rem, 4.5vw, 5rem);
+            font-size: clamp(4rem, 5.5vw, 6.5rem);
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            letter-spacing: 8px;
+            letter-spacing: 10px;
             color: #C5A059;
             line-height: 1;
         }
 
         .section-items {
-            padding: 50px 5%;
+            padding: 55px 5%;
             overflow: hidden;
         }
 
+        /* Imagen lateral */
         .section-image {
             position: relative;
             overflow: hidden;
@@ -126,6 +128,7 @@
             background: linear-gradient(to left, rgba(18,18,18,0.35) 0%, transparent 45%);
         }
 
+        /* Colores */
         .block-black .section-content { background-color: #121212; }
         .block-gold  .section-content { background-color: #C5A059; color: #121212; }
 
@@ -136,84 +139,87 @@
         .block-gold .item-price           { color: #121212; }
         .block-gold .note                 { border-left-color: #121212; color: #121212; }
 
+        /* Sub-categorías */
         .cat-title {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.6rem;
+            font-size: 2rem;
             letter-spacing: 4px;
             color: #C5A059;
-            margin-top: 32px;
-            margin-bottom: 10px;
+            margin-top: 38px;
+            margin-bottom: 12px;
             text-transform: uppercase;
         }
         .cat-title:first-child { margin-top: 0; }
 
+        /* Items */
         .item-line {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 13px 0;
+            padding: 17px 0;
             border-bottom: 1px dashed rgba(245,245,245,0.22);
-            gap: 20px;
+            gap: 24px;
         }
         .item-name {
-            font-size: 1.2rem;
+            font-size: 1.65rem;
             font-weight: 400;
             flex: 1;
             line-height: 1.3;
         }
         .item-price {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.35rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #C5A059;
             white-space: nowrap;
         }
 
+        /* Nota */
         .note {
-            margin-top: 30px;
-            font-size: 1.2rem;
+            margin-top: 34px;
+            font-size: 1.5rem;
             font-style: italic;
             opacity: 0.9;
-            padding: 16px 22px;
-            border-left: 6px solid #C5A059;
+            padding: 18px 24px;
+            border-left: 7px solid #C5A059;
             line-height: 1.7;
         }
 
-        /* 2 columnas para Comida Mexicana */
+        /* 2 columnas Comida Mexicana */
         .items-2col {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0 40px;
+            gap: 0 44px;
         }
 
-        /* ══ FOOTER MARCA: 80px ══ */
+        /* ══ FOOTER: 80px ══ */
         .menu-footer-brand {
             height: 80px;
             flex-shrink: 0;
             background-color: #121212;
-            border-top: 6px solid #C5A059;
+            border-top: 7px solid #C5A059;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .footer-brand-text {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.6rem;
+            font-size: 3rem;
             color: #C5A059;
-            letter-spacing: 16px;
+            letter-spacing: 18px;
         }
     </style>
 </head>
 <body>
 <div class="page-wrapper">
 
-    <!-- ══ HERO ══ -->
+    <!-- ══ HERO: 460px ══ -->
     <div class="menu-hero">
         <span class="label">RESTAURANTE &amp; CLUB BILLAR</span>
         <h1>NUESTRO<br>MENÚ</h1>
     </div>
 
-    <!-- ══ PLATOS FUERTES: 680px ══ -->
+    <!-- ══ PLATOS FUERTES: 820px ══ -->
     <div class="menu-section block-gold h-platos">
         <div class="section-content">
             <div class="section-title-col"><h2>PLATOS FUERTES</h2></div>
@@ -232,7 +238,7 @@
         </div>
     </div>
 
-    <!-- ══ PUPUSAS: 640px ══ -->
+    <!-- ══ PUPUSAS: 780px ══ -->
     <div class="menu-section block-black reverse h-pupusas">
         <div class="section-image">
             <img src="pupusas.png" alt="Pupusas salvadoreñas">
@@ -251,7 +257,7 @@
         </div>
     </div>
 
-    <!-- ══ COMIDA MEXICANA: 820px ══ -->
+    <!-- ══ COMIDA MEXICANA: 1060px ══ -->
     <div class="menu-section block-gold h-mexicana">
         <div class="section-content">
             <div class="section-title-col"><h2>COMIDA MEXICANA</h2></div>
@@ -261,7 +267,7 @@
                         <div class="cat-title">Burritos</div>
                         <div class="item-line"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
                         <div class="item-line"><span class="item-name">Mixto</span><span class="item-price">$6.00</span></div>
-                        <div class="cat-title" style="margin-top:40px;">Tacos</div>
+                        <div class="cat-title" style="margin-top:48px;">Tacos</div>
                         <div class="item-line"><span class="item-name">Res — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
                         <div class="item-line"><span class="item-name">Pollo — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
                         <div class="item-line"><span class="item-name">Mixto — 3 pcs / 6 pcs</span><span class="item-price">$4.00 / $7.00</span></div>
@@ -270,7 +276,7 @@
                         <div class="cat-title">Tortas</div>
                         <div class="item-line"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
                         <div class="item-line"><span class="item-name">Mixta</span><span class="item-price">$6.00</span></div>
-                        <div class="cat-title" style="margin-top:40px;">Gringas &amp; Quesadillas</div>
+                        <div class="cat-title" style="margin-top:48px;">Gringas &amp; Quesadillas</div>
                         <div class="item-line"><span class="item-name">Res / Pollo</span><span class="item-price">$5.00</span></div>
                         <div class="item-line"><span class="item-name">Pastor</span><span class="item-price">$6.00</span></div>
                     </div>
@@ -282,7 +288,7 @@
         </div>
     </div>
 
-    <!-- ══ FOOTER MARCA: 80px ══ -->
+    <!-- ══ FOOTER: 80px ══ -->
     <div class="menu-footer-brand">
         <div class="footer-brand-text">LA GERENCIA</div>
     </div>
