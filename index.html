@@ -8,6 +8,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── SECCIÓN ACCESO GERENCIA ── */
+        .gerencia-access {
+            background-color: #0a0a0a;
+            border-top: 1px solid #1e1e1e;
+            padding: 60px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            text-align: center;
+        }
+        .gerencia-access-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 5px;
+            color: #333;
+            text-transform: uppercase;
+        }
+        .gerencia-access-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: transparent;
+            border: 1px solid #2a2a2a;
+            color: #3a3a3a;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .gerencia-access-btn:hover {
+            border-color: #C5A059;
+            color: #C5A059;
+            background: rgba(197,160,89,0.04);
+        }
+        .gerencia-access-btn svg {
+            width: 14px;
+            height: 14px;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        .gerencia-access-btn:hover svg { opacity: 1; }
+    </style>
 </head>
 <body>
 
@@ -98,6 +146,17 @@
             Desarrollado por Willy para La Gerencia.
         </div>
     </footer>
+
+    <!-- ── ACCESO GERENCIA (discreto, solo para personal) ── -->
+    <div class="gerencia-access">
+        <span class="gerencia-access-label">Acceso interno</span>
+        <a href="control/index.html" class="gerencia-access-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            Panel de Gerencia
+        </a>
+    </div>
 
     <script src="script.js"></script>
 
