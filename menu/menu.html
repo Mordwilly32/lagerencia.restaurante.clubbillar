@@ -374,7 +374,8 @@
 
     <!-- TOP BAR -->
     <div class="top-bar">
-        <a href="index.html" class="back-btn">← VOLVER</a>
+        <!-- ✅ CORREGIDO: ../index.html porque menu.html está dentro de /menu/ -->
+        <a href="../index.html" class="back-btn">← VOLVER</a>
         <div class="top-bar-brand">LA GERENCIA</div>
     </div>
 
@@ -408,7 +409,10 @@
     <!-- ══ PUPUSAS ══ -->
     <div class="menu-section block-black reverse">
         <div class="section-image anim-fade-in">
-            <img src="imagenes/pupusas.png" alt="Pupusas salvadoreñas">
+            <!-- ✅ CORREGIDO: ../imagenes/ porque menu.html está dentro de /menu/ -->
+            <img src="../imagenes/pupusas.png"
+                 onerror="this.src='https://images.unsplash.com/photo-1599789197514-47270cd526b4?w=1200&q=85'"
+                 alt="Pupusas salvadoreñas">
         </div>
         <div class="section-content">
             <div class="section-title-col">
