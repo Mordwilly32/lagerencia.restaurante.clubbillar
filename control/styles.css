@@ -31,7 +31,7 @@ body::before{
   position:fixed; inset:0;
   background:
     linear-gradient(180deg, rgba(11,11,11,.78) 0%, rgba(11,11,11,.88) 60%, #0b0b0b 100%),
-    url("./imagenes/fondo.jpg") center/cover no-repeat fixed;
+    url("../imagenes/fondo.jpg") center/cover no-repeat fixed;
   z-index:-2;
   animation: bgZoom 30s ease-in-out infinite alternate;
 }
@@ -64,7 +64,7 @@ h3{font-size:22px;color:var(--gold-soft)}
 .eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600}
 .muted{color:var(--muted);font-size:13px}
 
-/* ───── LOGIN — estilo dos paneles (form izquierda, branding derecha) ───── */
+/* ───── LOGIN ───── */
 .gate{
   min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
 }
@@ -113,7 +113,6 @@ h3{font-size:22px;color:var(--gold-soft)}
   filter:drop-shadow(0 6px 18px rgba(0,0,0,.6));
   animation: float 4s ease-in-out infinite;
 }
-.recaptcha-wrap{margin-top:18px;display:flex;justify-content:center}
 
 /* form controls */
 input,select,button,textarea{
@@ -157,7 +156,7 @@ label{
 
 .shake{ animation: shake .45s ease-in-out; border-color:var(--bad) !important; }
 
-/* Captcha */
+/* ── Captcha ── */
 .captcha{
   margin-top:14px;
   background:linear-gradient(180deg,#100d08,#0a0805);
@@ -173,7 +172,7 @@ label{
   border:2px solid var(--gold);
   background:#0a0805;
   display:inline-flex;align-items:center;justify-content:center;
-  cursor:pointer;flex:0 0 auto;
+  cursor:default;flex:0 0 auto;
   transition:all .25s;
 }
 .captcha-check.ok{
@@ -199,10 +198,12 @@ label{
   font-family:var(--serif);font-size:18px;text-align:center;
 }
 .captcha-hint{font-size:10px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase}
+
+/* honeypot */
 .hp{
   position:absolute !important; left:-9999px !important; top:-9999px !important;
   width:1px !important; height:1px !important; opacity:0 !important;
-  pointer-events:none; tab-index:-1;
+  pointer-events:none;
 }
 
 details > summary{cursor:pointer;color:var(--muted);font-size:13px;letter-spacing:.06em;padding:6px 0}
@@ -218,14 +219,14 @@ hr.div{border:0;border-top:1px solid var(--border);margin:20px 0}
 }
 
 /* ════════════════════════════════════════════════
-   PANEL CENTRAL — BLANCO Y NEGRO
+   PANEL DE CONTROL — modo claro
    ════════════════════════════════════════════════ */
 body.app-mode::before{
   content:"";
   position:fixed; inset:0;
   background:
     linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.92)),
-    url("./imagenes/fondo.jpg") center/cover no-repeat fixed;
+    url("../imagenes/fondo.jpg") center/cover no-repeat fixed;
   z-index:-2;
 }
 body.app-mode::after{ display:none !important; }
@@ -284,15 +285,16 @@ body.app-mode{ background:#f6f6f6; color:#111; }
 }
 .app-mode button.ghost:hover{background:#f2f2f2}
 .app-mode button.danger{
-  background:#fff;color:#111;border:1px solid #111;
+  background:#fff;color:#c00;border:1px solid #c00;
 }
-.app-mode button.danger:hover{background:#111;color:#fff}
+.app-mode button.danger:hover{background:#c00;color:#fff}
 
 .app-mode label{
   font-size:11px;color:#444;display:block;margin-bottom:6px;
   letter-spacing:.14em;text-transform:uppercase;font-weight:600;
 }
 
+/* ── Topbar ── */
 .app-mode .topbar{
   display:flex;justify-content:space-between;align-items:center;
   margin-bottom:24px;gap:14px;flex-wrap:wrap;
@@ -303,18 +305,18 @@ body.app-mode{ background:#f6f6f6; color:#111; }
 .app-mode .topbar::before{
   content:"";
   width:48px;height:48px;
-  background:url("./imagenes/logo.png") center/contain no-repeat;
+  background:url("../imagenes/logo.png") center/contain no-repeat;
   margin-right:6px;flex:0 0 auto;
   filter:grayscale(1) contrast(1.2);
 }
 .app-mode .topbar > div:first-of-type{flex:1}
-
 .app-mode .pill{
   background:#f2f2f2;border:1px solid #e0e0e0;
   padding:6px 14px;border-radius:999px;font-size:12px;color:#111;
   font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 
+/* ── KPIs ── */
 .app-mode .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 22px}
 .app-mode .kpi{
   background:#fff;border:1px solid #e5e5e5;
@@ -333,6 +335,7 @@ body.app-mode{ background:#f6f6f6; color:#111; }
   display:block;margin-top:8px;color:#111;
 }
 
+/* ── Tabla de movimientos ── */
 .app-mode table{width:100%;border-collapse:collapse;margin-top:8px}
 .app-mode th,.app-mode td{
   padding:12px 10px;border-bottom:1px solid #ececec;text-align:left;font-size:14px;color:#111;
@@ -347,44 +350,108 @@ body.app-mode{ background:#f6f6f6; color:#111; }
 .app-mode .badge.in{color:#111;border-color:#111;background:#fff}
 .app-mode .badge.out{color:#fff;border-color:#111;background:#111}
 
+/* ── Mensajes ── */
 .app-mode .err{color:#b00020;font-size:13px;margin-top:10px;font-weight:500;animation: fadeIn .3s ease-out}
-.app-mode .ok{color:#111;font-size:13px;margin-top:10px;font-weight:500;animation: fadeIn .3s ease-out}
+.app-mode .ok{color:#1a7a38;font-size:13px;margin-top:10px;font-weight:500;animation: fadeIn .3s ease-out}
 
-.app-mode .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin-top:8px}
+/* ── MENÚ DE PLATILLOS ──────────────────────────────────────
+   grid responsivo: 2 columnas en desktop, 1 en móvil.
+   Cada ítem muestra nombre a la izquierda y precio a la derecha.
+   El separador de categoría tiene una línea decorativa.
+─────────────────────────────────────────────────────────── */
+.app-mode .menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+  gap:8px;
+  margin-top:6px;
+}
+
 .app-mode .menu-item{
-  border:1px solid #e5e5e5;border-radius:8px;
-  padding:12px 14px;background:#fff;cursor:pointer;text-align:left;
-  font-size:13px;transition:all .22s;
-  display:flex;justify-content:space-between;align-items:center;gap:8px;
-  color:#111;text-transform:none;letter-spacing:0;font-weight:400;
-  box-shadow:none;animation: fadeUp .35s ease-out both;
+  border:1px solid #e8e8e8;
+  border-radius:8px;
+  padding:13px 15px;
+  background:#fff;
+  cursor:pointer;
+  text-align:left;
+  font-size:13px;
+  transition: border-color .2s, box-shadow .2s, transform .18s, background .18s;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  color:#111;
+  text-transform:none;
+  letter-spacing:0;
+  font-weight:400;
+  box-shadow:none;
+  animation: fadeUp .32s ease-out both;
+  line-height:1.3;
 }
 .app-mode .menu-item:hover{
-  border-color:#111;background:#fafafa;transform:translateY(-2px);
-  box-shadow:0 4px 12px -6px rgba(0,0,0,.18);
+  border-color:#111;
+  background:#f8f8f8;
+  transform:translateY(-2px);
+  box-shadow:0 4px 14px -6px rgba(0,0,0,.15);
 }
-.app-mode .menu-item:active{transform:translateY(0) scale(.98)}
-.app-mode .menu-item .nm{font-weight:500;color:#111}
-.app-mode .menu-item .pr{font-family:var(--sans);font-size:15px;color:#111;font-weight:700}
-.app-mode .menu-cat{
-  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-  color:#666;margin:18px 0 8px;font-weight:600;
-  display:flex;align-items:center;gap:10px;
-}
-.app-mode .menu-cat::after{content:"";flex:1;height:1px;background:#e5e5e5}
+.app-mode .menu-item:active{ transform:translateY(0) scale(.98); }
 
+.app-mode .menu-item .nm{
+  font-weight:500;
+  color:#111;
+  flex:1;          /* ocupa el ancho sobrante */
+  min-width:0;     /* permite que el texto haga wrap */
+}
+.app-mode .menu-item .pr{
+  font-family:var(--sans);
+  font-size:14px;
+  color:#111;
+  font-weight:700;
+  white-space:nowrap;   /* el precio nunca se parte */
+  flex-shrink:0;
+}
+
+/* ── Categorías del menú ── */
+.app-mode .menu-cat{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#555;
+  margin:20px 0 8px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.app-mode .menu-cat::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:#e5e5e5;
+}
+/* Primera categoría sin margen superior extra */
+.app-mode .menu-cat:first-child{ margin-top:4px; }
+
+/* ── Divisores y detalles ── */
 .app-mode hr.div{border:0;border-top:1px solid #ececec;margin:20px 0}
 .app-mode details > summary{cursor:pointer;color:#666;font-size:13px;padding:6px 0}
 .app-mode details > summary:hover{color:#111}
+.app-mode details[open] > div{ animation: fadeUp .3s ease-out; }
 
+/* ── Scrollbar ── */
 .app-mode ::-webkit-scrollbar{width:10px;height:10px}
 .app-mode ::-webkit-scrollbar-track{background:#f2f2f2}
 .app-mode ::-webkit-scrollbar-thumb{background:#cfcfcf;border-radius:10px}
 .app-mode ::-webkit-scrollbar-thumb:hover{background:#111}
 
+/* ── Responsive ── */
 @media (max-width:640px){
   .app-mode .kpis{grid-template-columns:1fr}
   .app-mode .row > *{min-width:140px}
   .app-mode h1{font-size:22px}
   .app-mode .topbar::before{width:38px;height:38px}
+
+  /* En móvil: una sola columna en el menú */
+  .app-mode .menu-grid{
+    grid-template-columns:1fr;
+  }
 }
