@@ -3,17 +3,62 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>La Gerencia · Centro de Control</title>
+<title>La Gerencia</title>
 <meta name="robots" content="noindex, nofollow" />
-<img src="imagenes/logo.png" alt="La Gerencia Logo">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css" />
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<style>
+  /* Encabezado "LA GERENCIA" sobre el panel de login */
+  .site-heading {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+    text-align: center;
+    padding: 22px 24px 18px;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(11,11,11,.85) 0%, transparent 100%);
+  }
+  .site-heading .brand-label {
+    font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #c5a059;
+    text-shadow:
+      0 0 40px rgba(197,160,89,.4),
+      0 2px 12px rgba(0,0,0,.8);
+    line-height: 1;
+    display: block;
+  }
+  .site-heading .brand-rule {
+    display: block;
+    margin: 8px auto 0;
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(197,160,89,.6), transparent);
+  }
+
+  /* Ajuste para que el contenido del app no quede tapado por el encabezado */
+  .gate {
+    padding-top: 100px !important;
+  }
+</style>
 </head>
 <body>
+
+  <!-- ── Encabezado permanente ── -->
+  <div class="site-heading">
+    <span class="brand-label">La Gerencia</span>
+    <span class="brand-rule"></span>
+  </div>
+
   <div id="app"></div>
+
   <script src="./config.js"></script>
   <script src="./app.js"></script>
 </body>
