@@ -3,87 +3,90 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>La Gerencia</title>
+<title>La Gerencia · Control</title>
 <meta name="robots" content="noindex, nofollow" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css" />
-
-<!-- SOLUCIÓN: Restauramos el script de reCAPTCHA para evitar que app.js falle en la carga -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
 <style>
-  /* Fondo corregido y con blur */
+  /* ── Fondo con blur suave ── */
   body::before {
     background-image:
-      linear-gradient(180deg, rgba(11,11,11,.50) 0%, rgba(11,11,11,.58) 60%, rgba(11,11,11,.75) 100%),
+      linear-gradient(180deg, rgba(11,11,11,.52) 0%, rgba(11,11,11,.60) 60%, rgba(11,11,11,.78) 100%),
       url("../imagenes/fondo.jpg") !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    
-    /* Efecto blurry pero no tanto */
-    filter: blur(5px);
-    /* Escalamos un poco para que los bordes borrosos no se vean blancos */
-    transform: scale(1.05); 
+    filter: blur(5px) !important;
+    transform: scale(1.06) !important;
   }
 
-  /* Logo más grande */
-  img.logo {
-    width: 300px !important;
-    height: 300px !important;
+  /* ── Logo más grande en el panel derecho ── */
+  .gate-side img.logo {
+    width: 280px !important;
+    height: 280px !important;
     object-fit: contain !important;
-    filter: drop-shadow(0 8px 24px rgba(0,0,0,.7)) !important;
+    filter: drop-shadow(0 8px 28px rgba(0,0,0,.75)) !important;
   }
 
-  /* "LA GERENCIA" dentro del panel izquierdo */
-  .gate-brand { text-align: center; margin-bottom: 24px; }
+  /* ── Nombre del restaurante sobre el formulario ── */
+  .gate-brand {
+    text-align: center;
+    margin-bottom: 28px;
+  }
   .gate-brand .gb-title {
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(26px, 4.5vw, 40px);
+    font-size: clamp(24px, 4vw, 38px);
     font-weight: 600;
-    letter-spacing: .26em;
+    letter-spacing: .28em;
     text-transform: uppercase;
     color: #c5a059;
-    text-shadow: 0 0 30px rgba(197,160,89,.35), 0 2px 8px rgba(0,0,0,.7);
+    text-shadow: 0 0 32px rgba(197,160,89,.38), 0 2px 8px rgba(0,0,0,.7);
     display: block;
   }
   .gate-brand .gb-rule {
-    display: block; margin: 10px auto 0;
-    width: 90px; height: 1px;
+    display: block;
+    margin: 10px auto 0;
+    width: 80px;
+    height: 1px;
     background: linear-gradient(90deg, transparent, rgba(197,160,89,.7), transparent);
   }
 </style>
 </head>
 <body>
-
 <div id="app"></div>
 
+<!-- config.js define window.APP_CONFIG desde el base64 -->
 <script src="./config.js"></script>
+
+<!-- app.js contiene toda la lógica (renderGate, renderApp, makeChallenge, etc.) -->
 <script src="./app.js"></script>
 
 <script>
+/* ─────────────────────────────────────────────────────────────
+   Parche de UI: inyecta el nombre y corrige rutas del logo.
+   Se ejecuta inmediatamente y sigue observando cambios del DOM
+   hasta que el app termine de renderizar (máx. 8 s).
+───────────────────────────────────────────────────────────── */
 (function () {
-  var formDone = false;
+  var brandInjected = false;
 
-  function fixAll() {
-    /* Corregir src del logo */
-    document.querySelectorAll('img.logo, img[src*="imagenes/logo"]').forEach(function(img) {
+  function patch() {
+    /* 1. Corregir ruta del logo (control/ está un nivel más adentro) */
+    document.querySelectorAll('img.logo, img[src*="imagenes/logo"]').forEach(function (img) {
       if (!img.dataset.fixed) {
         img.dataset.fixed = '1';
         img.src = '../imagenes/logo.png';
-        img.style.width  = '300px';
-        img.style.height = '300px';
       }
     });
 
-    /* Inyectar "LA GERENCIA" arriba del formulario */
-    if (!formDone) {
+    /* 2. Insertar "La Gerencia" encima del <h2>Iniciar Sesión</h2> */
+    if (!brandInjected) {
       var form = document.querySelector('.gate-form');
       if (form && !form.querySelector('.gate-brand')) {
-        formDone = true;
+        brandInjected = true;
         var brand = document.createElement('div');
         brand.className = 'gate-brand';
         brand.innerHTML =
@@ -94,15 +97,11 @@
     }
   }
 
-  fixAll();
-  var obs = new MutationObserver(fixAll);
-  obs.observe(document.body, {
-    childList: true, subtree: true,
-    attributes: true, attributeFilter: ['src']
-  });
-  setTimeout(function () { obs.disconnect(); }, 10000);
+  patch();
+  var obs = new MutationObserver(patch);
+  obs.observe(document.body, { childList: true, subtree: true });
+  setTimeout(function () { obs.disconnect(); }, 8000);
 })();
 </script>
-
 </body>
 </html>
