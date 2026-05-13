@@ -32,8 +32,6 @@
   async function renderGate() {
     document.body.classList.remove("app-mode");
     const app = $("#app");
-    let challenge = makeChallenge();
-
     app.innerHTML = `
       <div class="gate">
         <div class="gate-card">
@@ -50,19 +48,12 @@
 
             <input class="hp" id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
 
-            <div class="captcha" id="captcha">
-              <div class="captcha-check" id="capCheck" title="Marcar cuando lo resuelvas"></div>
-              <div class="captcha-body">
-                <div class="captcha-q">
-                  Verificación:
-                  <span class="num" id="capA">${challenge.a}</span>
-                  <span>${challenge.op}</span>
-                  <span class="num" id="capB">${challenge.b}</span>
-                  <span>=</span>
-                  <input class="captcha-input" id="capAns" type="number" inputmode="numeric" placeholder="?" autocomplete="off" />
-                </div>
-                <span class="captcha-hint">No soy un robot · resuelve la operación</span>
-              </div>
+            <div class="recaptcha-wrap">
+              <div class="g-recaptcha"
+                   data-sitekey="${esc(window.RECAPTCHA_SITE_KEY || '')}"
+                   data-callback="onCaptchaOk"
+                   data-expired-callback="onCaptchaExpired"
+                   data-theme="dark"></div>
             </div>
 
             <div style="height:14px"></div>
@@ -84,8 +75,6 @@
 
           <div class="gate-side">
             <img class="logo" src="./imagenes/logo.png" alt="${esc(CFG.RESTAURANT_NAME)}" />
-            <div class="big-title">${esc(CFG.RESTAURANT_NAME)}</div>
-            <div class="sub">Iniciar Sesión</div>
           </div>
         </div>
       </div>`;
@@ -94,36 +83,11 @@
     if (session && session.username) return renderApp(session.username);
 
     const enterBtn = $("#enter");
-    const capCheck = $("#capCheck");
-    const capAns   = $("#capAns");
+    let captchaOk = false;
+    window.onCaptchaOk = () => { captchaOk = true; enterBtn.disabled = false; };
+    window.onCaptchaExpired = () => { captchaOk = false; enterBtn.disabled = true; };
 
-    function refreshChallenge() {
-      challenge = makeChallenge();
-      $("#capA").textContent = challenge.a;
-      $("#capB").textContent = challenge.b;
-      document.querySelector(".captcha-q span:nth-of-type(2)").textContent = challenge.op;
-      capAns.value = "";
-      capCheck.classList.remove("ok");
-      enterBtn.disabled = true;
-    }
-
-    function validateCaptcha() {
-      const ok = parseInt(capAns.value, 10) === challenge.answer;
-      capCheck.classList.toggle("ok", ok);
-      enterBtn.disabled = !ok;
-      return ok;
-    }
-
-    capAns.addEventListener("input", validateCaptcha);
-    capCheck.addEventListener("click", () => {
-      if (!validateCaptcha()) {
-        capAns.classList.add("shake");
-        setTimeout(() => capAns.classList.remove("shake"), 500);
-        capAns.focus();
-      }
-    });
-
-    ["username", "password", "capAns"].forEach(id => {
+    ["username", "password"].forEach(id => {
       $(`#${id}`).addEventListener("keydown", e => {
         if (e.key === "Enter" && !enterBtn.disabled) enterBtn.click();
       });
@@ -138,17 +102,10 @@
         msg.textContent = "Verificación fallida.";
         return;
       }
-      if (Date.now() - challenge.startedAt < 1200) {
+      const token = (window.grecaptcha && grecaptcha.getResponse) ? grecaptcha.getResponse() : "";
+      if (!captchaOk || !token) {
         msg.className = "err";
-        msg.textContent = "Demasiado rápido. Intenta de nuevo.";
-        refreshChallenge();
-        return;
-      }
-      if (!validateCaptcha()) {
-        msg.className = "err";
-        msg.textContent = "Resuelve la verificación primero.";
-        capAns.classList.add("shake");
-        setTimeout(() => capAns.classList.remove("shake"), 500);
+        msg.textContent = "Completa la verificación reCAPTCHA.";
         return;
       }
 
@@ -172,7 +129,8 @@
         $("#password").value = "";
         card.classList.add("shake");
         setTimeout(() => card.classList.remove("shake"), 500);
-        refreshChallenge();
+        if (window.grecaptcha) { try { grecaptcha.reset(); } catch(_){} }
+        captchaOk = false; enterBtn.disabled = true;
         return;
       }
 
