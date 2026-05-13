@@ -13,25 +13,24 @@
 
 <style>
   /*
-   * CORRECCIÓN DE RUTAS:
-   * Este archivo vive en /control/index.html
-   * Las imágenes están en /imagenes/ (raíz)
-   * Por eso la ruta correcta es ../imagenes/ (subir un nivel)
+   * RUTAS CORREGIDAS
+   * Este archivo: /control/index.html
+   * Imágenes en:  /imagenes/  (raíz del repo)
+   * Ruta correcta: ../imagenes/
    */
 
-  /* Fondo: override del body::before del CSS */
+  /* ── Fondo: separar propiedades para que !important funcione ── */
   body::before {
-    background:
+    background-image:
       linear-gradient(180deg, rgba(11,11,11,.78) 0%, rgba(11,11,11,.88) 60%, #0b0b0b 100%),
-      url("../imagenes/fondo.jpg") center/cover no-repeat fixed !important;
+      url("../imagenes/fondo.jpg") !important;
+    background-size: auto, cover !important;
+    background-position: center, center !important;
+    background-attachment: scroll, fixed !important;
+    background-repeat: no-repeat, no-repeat !important;
   }
 
-  /* Logo del panel derecho: override del app-mode */
-  body.app-mode .topbar::before {
-    background-image: url("../imagenes/logo.png") !important;
-  }
-
-  /* "LA GERENCIA" arriba del formulario de login */
+  /* ── "LA GERENCIA" dentro del panel izquierdo ── */
   .gate-brand {
     text-align: center;
     margin-bottom: 24px;
@@ -54,30 +53,6 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(197,160,89,.7), transparent);
   }
-
-  /* Logo en panel derecho si el JS no lo cargó */
-  .gate-logo-inject {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    position: relative;
-    z-index: 1;
-  }
-  .gate-logo-inject img {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    filter: drop-shadow(0 6px 18px rgba(0,0,0,.6));
-    animation: float 4s ease-in-out infinite;
-  }
-  .gate-logo-inject span {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    color: #c5a059;
-    font-size: 15px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-  }
 </style>
 </head>
 <body>
@@ -89,45 +64,39 @@
 
 <script>
 (function () {
-  var injected = false;
+  var formDone = false;
 
-  function inject() {
-    if (injected) return;
+  function fixAll() {
+    /* 1) Corregir src de img.logo que app.js pone con ruta incorrecta */
+    document.querySelectorAll('img.logo, img[src*="imagenes/logo"]').forEach(function(img) {
+      if (!img.dataset.fixed) {
+        img.dataset.fixed = '1';
+        img.src = '../imagenes/logo.png';
+      }
+    });
 
-    var form = document.querySelector('.gate-form');
-    if (!form) return;
-    if (form.querySelector('.gate-brand')) { injected = true; return; }
-
-    injected = true;
-
-    /* 1) "LA GERENCIA" como primer elemento del formulario */
-    var brand = document.createElement('div');
-    brand.className = 'gate-brand';
-    brand.innerHTML =
-      '<span class="gb-title">La Gerencia</span>' +
-      '<span class="gb-rule"></span>';
-    form.insertBefore(brand, form.firstChild);
-
-    /* 2) Logo en el panel derecho (ruta corregida: ../imagenes/) */
-    var side = document.querySelector('.gate-side');
-    if (side && !side.querySelector('img')) {
-      var wrap = document.createElement('div');
-      wrap.className = 'gate-logo-inject';
-      wrap.innerHTML =
-        '<img src="../imagenes/logo.png" alt="La Gerencia" />' +
-        '<span>La Gerencia</span>';
-      side.appendChild(wrap);
+    /* 2) Inyectar "LA GERENCIA" arriba del formulario */
+    if (!formDone) {
+      var form = document.querySelector('.gate-form');
+      if (form && !form.querySelector('.gate-brand')) {
+        formDone = true;
+        var brand = document.createElement('div');
+        brand.className = 'gate-brand';
+        brand.innerHTML =
+          '<span class="gb-title">La Gerencia</span>' +
+          '<span class="gb-rule"></span>';
+        form.insertBefore(brand, form.firstChild);
+      }
     }
   }
 
-  /* Corre inmediatamente y observa el DOM */
-  inject();
-  var obs = new MutationObserver(function () {
-    inject();
-    if (injected) obs.disconnect();
-  });
-  obs.observe(document.body, { childList: true, subtree: true });
-  setTimeout(function () { obs.disconnect(); }, 8000);
+  /* Correr inmediatamente y en cada cambio del DOM */
+  fixAll();
+  var obs = new MutationObserver(fixAll);
+  obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
+
+  /* Parar después de 10 s */
+  setTimeout(function () { obs.disconnect(); }, 10000);
 })();
 </script>
 
