@@ -13,21 +13,32 @@
 
 <style>
   /*
-   * RUTAS CORREGIDAS
-   * Este archivo: /control/index.html
-   * Imágenes en:  /imagenes/  (raíz del repo)
-   * Ruta correcta: ../imagenes/
+   * RUTAS: este archivo vive en /control/index.html
+   * Imágenes en /imagenes/ (raíz) → ruta: ../imagenes/
    */
 
-  /* ── Fondo: separar propiedades para que !important funcione ── */
+  /* ── FONDO: gradiente más transparente para que se vea la imagen de carne ── */
   body::before {
     background-image:
-      linear-gradient(180deg, rgba(11,11,11,.78) 0%, rgba(11,11,11,.88) 60%, #0b0b0b 100%),
+      linear-gradient(
+        180deg,
+        rgba(11,11,11,.45) 0%,
+        rgba(11,11,11,.52) 60%,
+        rgba(11,11,11,.72) 100%
+      ),
       url("../imagenes/fondo.jpg") !important;
     background-size: auto, cover !important;
     background-position: center, center !important;
     background-attachment: scroll, fixed !important;
     background-repeat: no-repeat, no-repeat !important;
+  }
+
+  /* ── LOGO más grande ── */
+  img.logo {
+    width: 300px !important;
+    height: 300px !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,.7)) !important;
   }
 
   /* ── "LA GERENCIA" dentro del panel izquierdo ── */
@@ -67,15 +78,17 @@
   var formDone = false;
 
   function fixAll() {
-    /* 1) Corregir src de img.logo que app.js pone con ruta incorrecta */
+    /* 1) Corregir src del logo y agrandarlo */
     document.querySelectorAll('img.logo, img[src*="imagenes/logo"]').forEach(function(img) {
       if (!img.dataset.fixed) {
         img.dataset.fixed = '1';
         img.src = '../imagenes/logo.png';
+        img.style.width  = '300px';
+        img.style.height = '300px';
       }
     });
 
-    /* 2) Inyectar "LA GERENCIA" arriba del formulario */
+    /* 2) "LA GERENCIA" arriba del formulario */
     if (!formDone) {
       var form = document.querySelector('.gate-form');
       if (form && !form.querySelector('.gate-brand')) {
@@ -90,12 +103,12 @@
     }
   }
 
-  /* Correr inmediatamente y en cada cambio del DOM */
   fixAll();
   var obs = new MutationObserver(fixAll);
-  obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
-
-  /* Parar después de 10 s */
+  obs.observe(document.body, {
+    childList: true, subtree: true,
+    attributes: true, attributeFilter: ['src']
+  });
   setTimeout(function () { obs.disconnect(); }, 10000);
 })();
 </script>
