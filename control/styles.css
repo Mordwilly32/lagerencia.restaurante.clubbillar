@@ -30,7 +30,7 @@ body::before{
   content:"";
   position:fixed; inset:0;
   background:
-    linear-gradient(180deg, rgba(11,11,11,.78) 0%, rgba(11,11,11,.88) 60%, #0b0b0b 100%),
+    linear-gradient(180deg, rgba(11,11,11,.42) 0%, rgba(11,11,11,.55) 60%, rgba(11,11,11,.72) 100%),
     url("./imagenes/fondo.jpg") center/cover no-repeat fixed;
   z-index:-2;
   animation: bgZoom 30s ease-in-out infinite alternate;
@@ -102,6 +102,7 @@ h3{font-size:22px;color:var(--gold-soft)}
   padding:40px 30px;text-align:center;gap:14px;
   border-left:1px solid var(--border);
   position:relative;overflow:hidden;
+  min-height:460px;
 }
 .gate-side::after{
   content:"";position:absolute;inset:0;
@@ -109,7 +110,7 @@ h3{font-size:22px;color:var(--gold-soft)}
   pointer-events:none;
 }
 .gate-side img.logo{
-  width:240px;height:240px;object-fit:contain;
+  width:340px;height:340px;object-fit:contain;
   filter:drop-shadow(0 6px 18px rgba(0,0,0,.6));
   animation: float 4s ease-in-out infinite;
 }
@@ -213,7 +214,7 @@ hr.div{border:0;border-top:1px solid var(--border);margin:20px 0}
 @media (max-width:760px){
   .gate-card{grid-template-columns:1fr;max-width:460px}
   .gate-side{order:-1;border-left:0;border-bottom:1px solid var(--border);padding:30px 20px}
-  .gate-side img.logo{width:160px;height:160px}
+  .gate-side img.logo{width:220px;height:220px}
   .gate-form{padding:32px 26px}
 }
 
